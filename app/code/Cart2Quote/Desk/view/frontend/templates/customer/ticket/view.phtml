@@ -1,0 +1,23 @@
+<?php
+/**
+ * Copyright (c) 2019. Cart2Quote B.V. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var Cart2Quote\Desk\Block\Customer\Ticket\View $block */
+?>
+
+<div class="block-title">
+    <strong><?php echo __("Message History") ?></strong>
+</div>
+
+<div class="customer-ticket view">
+    <?php echo $block->getChildHtml()?>
+</div>
+<div class="actions-toolbar">
+    <div class="secondary">
+        <a class="action back" href="<?php echo $block->getBackUrl() ?>">
+            <span><?php echo __("Back to My Tickets") ?></span>
+        </a>
+    </div>
+</div>

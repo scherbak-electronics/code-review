@@ -1,0 +1,42 @@
+<?php
+/**
+ * Copyright (c) 2019. Cart2Quote B.V. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var Cart2Quote\Desk\Block\Adminhtml\Edit\Container\Create $block */
+?>
+
+<div class="create-message-container" data-mage-init='{"createMessage":{}, "ticketValidate":{}}'>
+    <header>
+        <div class="conversation-title">
+            <span>
+                <input form="edit_form"
+                       id="ticketForm"
+                       type="text"
+                       name="subject"
+                       placeholder="<?php echo __("Enter your subject") ?>"
+                       value="<?php echo $block->getSubject() ?>"
+                       class="required-entry"/>
+            </span>
+        </div>
+    </header>
+    <div class="create-message">
+        <div class="set-conversation-type">
+            <ul>
+                <li class="public-reply active"><?php echo __("Public reply") ?></li>
+                <li class="internal-note"><?php echo __("Internal note") ?></li>
+            </ul>
+        </div>
+        <?php echo $block->getChildHtml(); ?>
+        <div class="textarea-container">
+            <textarea form="edit_form" name="message" id="desk_message" placeholder="<?php echo __("Enter your message") ?>"></textarea>
+        </div>
+        <input form="edit_form"
+               id="is-private-message"
+               style="display: none;"
+               type="checkbox"
+               name="is_private"
+               value="1">
+    </div>
+</div>

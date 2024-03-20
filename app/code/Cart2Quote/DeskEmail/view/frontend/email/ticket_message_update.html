@@ -1,0 +1,44 @@
+<!--
+  ~ Copyright (c) 2019. Cart2Quote B.V. All rights reserved.
+  ~ See COPYING.txt for license details.
+  -->
+<!--@subject Update for ticket #{{var ticket.getId()}} - {{var ticket.getSubject()}} @-->
+<!--@vars {
+"var ticket.id":"Ticket Id",
+"var ticket.getStatus()":"Ticket Status",
+"var ticket.getAssigneeName()":"Admin Name",
+"var ticket.getCustomerName()":"Customer Name",
+"var ticket.getAssigneeEmail()":"Admin Email",
+"var ticket.getCustomerEmail()":"Customer Email",
+"var message.getMessage()":"Ticket Message",
+"var message.getName()":"Message Creator Name",
+"var message.getEmail()":"Message Creator Email"
+} @-->
+{{template config_path="design/email/header_template"}}
+
+<table>
+    <tr class="email-intro">
+        <td>
+            <p class="greeting">
+                {{trans
+                "Hello %name,"
+
+                name=$ticket.getCustomerName()
+                }}
+            </p>
+            <p>
+                {{trans
+                "Your ticket #%increment_id has been updated with the status of <strong>%status</strong>."
+
+                increment_id=$ticket.getId()
+                status=$ticket.getStatus()
+                |raw}}
+            </p>
+            <p>
+                You can check for new messages by <a href="{{var frontend_edit_ticket_url}}">logging into your account</a>.
+            </p>
+        </td>
+    </tr>
+</table>
+
+{{template config_path="design/email/footer_template"}}

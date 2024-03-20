@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!--
+/**
+* BSS Commerce Co.
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the EULA
+* that is bundled with this package in the file LICENSE.txt.
+* It is also available through the world-wide-web at this URL:
+* http://bsscommerce.com/Bss-Commerce-License.txt
+*
+* @category   BSS
+* @package    Bss_GroupedProductOption
+* @author     Extension Team
+* @copyright  Copyright (c) 2017-2018 BSS Commerce Co. ( http://bsscommerce.com )
+* @license    http://bsscommerce.com/Bss-Commerce-License.txt
+*/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Magento\GroupedProduct\Model\ResourceModel\Indexer\Stock\Grouped"
+				type="Bss\GroupedProductOption\Model\ResourceModel\Indexer\Stock\Grouped"/>
+	<preference for="Magento\GroupedProduct\Ui\DataProvider\Product\GroupedProductDataProvider"
+				type="Bss\GroupedProductOption\Ui\DataProvider\Product\GroupedProductDataProvider"/>
+    <preference for="Magento\GroupedProduct\Model\ResourceModel\Product\Link"
+                type="Bss\GroupedProductOption\Override\Model\ResourceModel\Product\Link"/>
+    <preference for="Magento\Framework\File\Uploader"
+                type="Bss\GroupedProductOption\Model\File\Uploader" />
+	<type name="Magento\Catalog\Model\Product\Option\Type\File\ValidatorFile">
+		<plugin name="bss_groupedproductoption_plugin_model_product_option_type_file_validatorfile"
+				type="Bss\GroupedProductOption\Plugin\Model\Product\Option\Type\File\ValidatorFile" sortOrder="10"/>
+	</type>
+	<type name="Magento\InventorySalesApi\Model\GetSkuFromOrderItemInterface">
+		<plugin name="get_group_option_sku_from_order"
+				type="Bss\GroupedProductOption\Plugin\Sales\GetSkuFromOrderItem"/>
+	</type>
+	<!-- <preference for="Cart2Quote\Quotation\Controller\Quote\Add" type="Bss\GroupedProductOption\Controller\Cart\Add" /> -->
+</config>

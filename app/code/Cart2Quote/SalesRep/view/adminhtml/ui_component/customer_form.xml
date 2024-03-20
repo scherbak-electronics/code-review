@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2023. Cart2Quote B.V. All rights reserved.
+  ~ See COPYING.txt for license details.
+  -->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <fieldset name="customer">
+        <field name="user_id">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Cart2Quote\SalesRep\Model\AdminUser\Collection</item>
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Assigned Sales Representative</item>
+                    <item name="dataType" xsi:type="string">number</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="sortOrder" xsi:type="number">999</item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+</form>

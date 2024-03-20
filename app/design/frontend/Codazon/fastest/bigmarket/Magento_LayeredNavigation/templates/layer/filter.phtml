@@ -1,0 +1,100 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Template for filter items block
+ *
+ * @var $block \Magento\LayeredNavigation\Block\Navigation\FilterRenderer
+ */
+?>
+<?php 
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$request = $objectManager->get('Magento\Framework\App\Action\Context')->getRequest();
+
+if ($this->getRequest()->getFullActionName() == 'catalog_category_view') {
+    ?>
+ 
+
+
+<ol class="items">       
+<?php 
+   $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+   $category = $objectManager->get('Magento\Framework\Registry')->registry('current_category');//get current category
+    $catId = $category->getId();
+?>
+<?php
+    $subcategory = $objectManager->create('Magento\Catalog\Model\Category')->load($catId);           
+    $subcats = $subcategory->getChildrenCategories();
+
+    foreach ($subcats as $subcat) {
+                $_category = $objectManager->create('Magento\Catalog\Model\Category')->load($subcat->getId());
+                $_outputhelper = $this->helper('Magento\Catalog\Helper\Output');
+                $subcaturl = $subcat->getUrl();
+                $catId1 = $subcat->getId();
+
+                $subcat->getName();  
+                $product_count = $subcat->getProductCount();
+                $subcategorySub = $objectManager->create('Magento\Catalog\Model\Category')->load($catId1);
+                $subcats1 = $subcategorySub->getChildrenCategories();
+                ?>
+                 <li class="my item">
+                    <a href="<?php echo $subcaturl; ?>">
+                        <?php /* @escapeNotVerified */ echo $subcat->getName()?>
+                        <?php if($product_count > 0){?>
+                                 <span class="count"><?php /* @escapeNotVerified */ echo $product_count;?><span class="filter-count-label"><?php /* @escapeNotVerified */ echo __('items') ?></span></span>
+                        <?php }?>
+                    </a>
+                    <?php if($product_count > 0){?>
+                     <ol class="items-sub"> 
+                        <?php
+                        foreach ($subcats1 as $subcat) {
+                            $_category = $objectManager->create('Magento\Catalog\Model\Category')->load($subcat->getId());
+                            $_outputhelper = $this->helper('Magento\Catalog\Helper\Output');
+                            $subcaturl = $subcat->getUrl();
+
+                            $subcat->getName();  
+                            $product_count = $subcat->getProductCount();
+                            ?>
+                           
+                                <li class="my item">
+                                    <a href="<?php echo $subcaturl; ?>">
+                                        <?php /* @escapeNotVerified */ echo $subcat->getName()?>
+                                        <?php if($product_count > 0){?>
+                                            <span class="count"><?php /* @escapeNotVerified */ echo $product_count;?><span class="filter-count-label"><?php /* @escapeNotVerified */ echo __('items') ?></span></span>
+                                        <?php }?>
+                                    </a>
+                                </li>
+                       <?php } ?>
+                    </ol>
+                    <?php }?>
+                </li>
+            <?php 
+            }
+
+
+           
+?>
+
+<style type="text/css">
+    .filter-options-content ol.items-sub {
+        padding-left: 15px;
+    }
+    #narrow-by-list .filter-options-content .items-sub .my {
+        list-style: none none !important;
+    }
+    .sidebar-main .filter-options-content {
+        display: block !important;
+    }
+    #narrow-by-list .filter-options-title::after {
+        content: "" !important;
+    }
+</style>
+</ol>
+<?php } ?>

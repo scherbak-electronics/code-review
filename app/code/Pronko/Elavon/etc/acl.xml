@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Pronko Consulting
+ * See LICENSE for license details.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magento_Reports::report">
+                    <resource id="Magento_Reports::salesroot">
+                        <resource id="Pronko_Elavon::report_transaction" title="Elavon Transactions Report" sortOrder="200" />
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

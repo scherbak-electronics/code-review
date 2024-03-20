@@ -1,0 +1,18 @@
+<?php
+$helper = $this->helper('Rainytownmedia\Restrictspam\Helper\Data');
+$form_name = $block->getForm_name();
+if($helper->isRestrictspam($form_name)){
+?>
+<input type="hidden" value="" name="logspam[detect]" id="extfield">
+<input type="hidden" value="<?php echo $helper->microtime_float();?>" name="logspam[current_time]" id="logspam_current_time">
+<script type="text/javascript">
+require(['jquery'], function($){
+	setTimeout( hideExtField, <?php echo $helper::DETECT_FIELD_ALLOW;?>);
+	
+	function hideExtField(){
+		$("#extfield").remove();
+	}
+});
+</script>
+
+<?php }?>

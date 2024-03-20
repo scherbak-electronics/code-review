@@ -1,0 +1,91 @@
+<?php
+/**
+ * Copyright (c) 2021. Cart2Quote B.V. All rights reserved.
+ * See COPYING.txt for license details.
+ * @codingStandardsIgnoreFile
+ */
+// phpcs:disable Magento2.Templates.ThisInTemplate.FoundThis
+
+/**
+ * Product view template
+ *
+ * @var $block \Cart2Quote\Quotation\Block\Product\View
+ */
+?>
+<?php $_helper = $this->helper(Magento\Catalog\Helper\Output::class); ?>
+<?php $_product = $block->getProduct(); ?>
+<!-- code for showing price on product listing page -->
+<?php 
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$customerSession = $objectManager->get(\Magento\Customer\Model\SessionFactory::class)->create();
+$price = $_product->getPrice();
+$priceHelper = $objectManager->create('Magento\Framework\Pricing\Helper\Data'); 
+$formattedPrice = $priceHelper->currency($price, true, false);
+if ($price != 0) {
+    $customerSession = $objectManager->get('Magento\Customer\Model\Session');  
+    if ($customerSession->isLoggedIn()) {
+        $customerId = $customerSession->getCustomerId();
+        $customer = $objectManager->create(\Magento\Customer\Api\CustomerRepositoryInterface::class)->getById($customerId);
+        $customAttribute = $customer->getCustomAttribute('show_price');
+        
+        if($customAttribute != NULL){
+            $hidePriceValue = $customAttribute->getValue();
+        }else{
+            $hidePriceValue = 0;
+        }
+       if ($hidePriceValue != 0) {
+?>
+<div class="show_price" data-role="priceBox">
+<span class="price-container price-final_price tax weee">
+<span id="product-price" data-price-amount="<?php echo $price; ?>" data-price-type="finalPrice" class="price-wrapper "><span class="price"><?php echo $formattedPrice; ?></span></span>
+</span>
+</div>
+<?php 
+    } 
+} 
+}
+?>
+<!-- end of code -->
+<div class="product-add-form">
+    <form data-product-sku="<?= $block->escapeHtmlAttr($_product->getSku()) ?>"
+          action="<?= $block->escapeUrl($block->getSubmitUrl($_product)) ?>" method="post"
+          id="product_addtocart_form"<?php if ($_product->getOptions()) :?> enctype="multipart/form-data"<?php endif; ?>>
+        <input type="hidden" name="product" value="<?= (int)$_product->getId() ?>" />
+        <input type="hidden" name="selected_configurable_option" value="" />
+        <input type="hidden" name="related_product" id="related-products-field" value="" />
+        <input type="hidden" name="item"  value="<?= (int)$block->getRequest()->getParam('id') ?>" />
+        <?= $block->getBlockHtml('formkey') ?>
+        <?= $block->getChildHtml('form_top') ?>
+        <?php if (!$block->hasOptions()) :?>
+            <?= $block->getChildHtml('product_info_form_content') ?>
+        <?php else :?>
+            <?php if (($_product->isSaleable() || $block->showButton()) && $block->getOptionsContainer() == 'container1') :?>
+                <?= $block->getChildChildHtml('options_container') ?>
+            <?php endif;?>
+        <?php endif; ?>
+
+        <?php if (($_product->isSaleable() || $block->showButton()) && $block->hasOptions() && $block->getOptionsContainer() == 'container2') :?>
+            <?= $block->getChildChildHtml('options_container') ?>
+        <?php endif;?>
+        <?= $block->getChildHtml('form_bottom') ?>
+    </form>
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "[data-role=priceBox][data-price-box=product-id-<?= $block->escapeHtml($_product->getId()) ?>]": {
+            "priceBox": {
+                "priceConfig":  <?= /* @noEscape */ $block->getJsonConfig() ?>
+            }
+        }
+    }
+</script>
+
+<style type="text/css">
+.show_price span.price {
+    font-size: 16px;
+}
+.product-info-main .product-info-price {
+    display: none;
+}
+</style>

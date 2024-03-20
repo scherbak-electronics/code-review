@@ -1,0 +1,154 @@
+<?php
+
+$block= $block->getLayout()->createBlock('Customerprice\Attachment\Block\Frontend\FileData');
+$baseUrl = $block->getBaseUrl();
+$masterValue = $block->getMasterValue();
+$individualValue = $block->getIndividualValue();
+$groupId = $block->getGroupId();
+$currentCustomerGroupName = $block->getGroupName($groupId);
+$allFileCollection = $block->getAllFileCollection($currentCustomerGroupName);
+$individualFileCollection = $block->getIndividualFileCollection($currentCustomerGroupName);
+$masterFileCollection = $block->getMasterFileCollection($currentCustomerGroupName);
+
+?>
+<div class="priceListFiles">
+
+<!-- all file collection -->
+<button id="all" value="all">All</button>
+<div id="all-files" class="commanaccording">
+	<?php if (count($allFileCollection) > 0) { ?>
+	    <div class="grid">
+	      <?php
+	        // Sort the data collection by position in ascending order
+	        usort($allFileCollection, function($a, $b) {
+	          return $a['position'] <=> $b['position'];
+	        }); 
+	        foreach($allFileCollection as $data):
+	          $file = $data['file'];
+	          $position = $data['position'];
+	          $extension = strstr($file, '.'); 
+	      ?>
+          <div class="pdf-file">
+              <a href="<?php echo $pdffile = $baseUrl . '/media/customerImage/' . $file; ?>" 
+                 height="100px" 
+                 download="<?php echo $file; ?>" >
+                <?php if ($extension == '.pdf') { ?>
+                  <img src="<?php echo $baseUrl . '/media/PdfIcon.png' ?>" />
+              	<p><?php echo $file; ?></p>
+                <?php } else { ?>
+                	<img src="<?php echo $baseUrl . '/media/ExcelIcon.png' ?>" height="78" width="78" />
+             			<p><?php echo $file; ?></p>
+                <?php } ?>
+              </a>
+          </div>
+	      <?php endforeach; ?> 
+	    </div>     
+	<?php } else { ?> 
+	  <h1 style="text-align: center;">No Data Found.</h1>
+	<?php } ?>
+</div>
+
+<!-- master file collection -->
+<button class="btn1" id="master" value="master"><?php echo $masterValue; ?></button>
+	<div id="master-files" class="commanaccording" style="display: none;">
+		<?php if (count($masterFileCollection) > 0) { ?>
+		    <div class="grid">
+		      <?php
+		        // Sort the data collection by position in ascending order
+		        usort($masterFileCollection, function($a, $b) {
+		          return $a['position'] <=> $b['position'];
+		        }); 
+		        foreach($masterFileCollection as $data):
+		          $file = $data['file'];
+		          $position = $data['position'];
+		          $extension = strstr($file, '.'); 
+		      ?>
+	          <div class="pdf-file">
+	              <a id="downloadLink" 
+	                 href="<?php echo $pdffile = $baseUrl . '/media/customerImage/' . $file; ?>" 
+	                 height="100px" 
+	                 download="<?php echo $file; ?>">
+	                <?php if ($extension == '.pdf') { ?>
+	                  <img src="<?php echo $baseUrl . '/media/PdfIcon.png' ?>" />
+	              	  <p><?php echo $file; ?></p>
+	                <?php } else { ?>
+	                	<img src="<?php echo $baseUrl . '/media/ExcelIcon.png' ?>" height="78" width="78" />
+	             			<p><?php echo $file; ?></p>
+	                <?php } ?>
+	              </a>
+	          </div>
+		      <?php endforeach; ?> 
+		    </div>     
+		<?php } else { ?> 
+		  <h1 style="text-align: center;">No Data Found.</h1>
+		<?php } ?>
+	</div>
+
+<!-- individual file collection -->
+<button class="btn1" id="individual" value="individual"><?php echo $individualValue; ?></button>
+	<div id="individual-files" class="commanaccording" style="display:none;">
+		<?php if (count($individualFileCollection) > 0) { ?>
+		    <div class="grid">
+		      <?php
+		        // Sort the data collection by position in ascending order
+		        usort($individualFileCollection, function($a, $b) {
+		          return $a['position'] <=> $b['position'];
+		        }); 
+		        foreach($individualFileCollection as $data):
+		          $file = $data['file'];
+		          $position = $data['position'];
+		          $extension = strstr($file, '.'); 
+		      ?>
+		            <div class="pdf-file">
+		                <a id="downloadLink" 
+		                   href="<?php echo $pdffile = $baseUrl . '/media/customerImage/' . $file; ?>" 
+		                   height="100px" 
+		                   download="<?php echo $file; ?>">
+		                  <?php if ($extension == '.pdf') { ?>
+		                    <img src="<?php echo $baseUrl . '/media/PdfIcon.png' ?>" /> 
+		               		<p><?php echo $file; ?></p>
+		                  <?php } else { ?>
+			                	<img src="<?php echo $baseUrl . '/media/ExcelIcon.png' ?>" height="78" width="78" />
+			             			<p><?php echo $file; ?></p>
+			                <?php } ?>
+		               </a>
+		            </div>
+		      <?php endforeach; ?> 
+		    </div>     
+		<?php } else { ?> 
+		  <h1 style="text-align: center;">No Data Found.</h1>
+		<?php } ?>
+	</div>
+
+</div>
+
+<script type="text/javascript">
+	const all = document.getElementById("all-files");
+	const master = document.getElementById("master-files");
+	const individual = document.getElementById("individual-files");
+	const allBtn = document.getElementById("all");
+	const masterBtn = document.getElementById("master");
+	const individualBtn = document.getElementById("individual");
+	  
+	masterBtn.addEventListener("click" , () => {
+	    master.style.display = "block";
+	    all.style.display = "none";
+	    individual.style.display = 'none';
+	});
+
+	individualBtn.addEventListener("click" , () => {
+	    individual.style.display = "block";
+	    master.style.display = "none";
+	    all.style.display = "none";
+	});
+
+	allBtn.addEventListener("click" , () => {
+		all.style.display = "block";
+		master.style.display = "none";
+		individual.style.display = 'none';
+	})
+</script>
+
+<!-- style="width: 200px; text-align: center;" -->
+
+

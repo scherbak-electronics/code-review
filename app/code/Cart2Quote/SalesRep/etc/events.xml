@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright (c) 2023. Cart2Quote B.V. All rights reserved.
+  ~ See COPYING.txt for license details.
+  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="sales_quote_load_after">
+        <observer name="salesrep_add_admin_user" instance="Cart2Quote\SalesRep\Observer\Quotation\Model\QuoteAfterLoadObserver"/>
+    </event>
+    <event name="sales_order_collection_load_before">
+        <observer name="salesrep_add_admin_user" instance="Cart2Quote\SalesRep\Observer\Order\Model\ResourceModel\Order\CollectionObserver"/>
+    </event>
+    <event name="backend_block_widget_grid_prepare_grid_before">
+        <observer name="salesrep_add_admin_user" instance="Cart2Quote\SalesRep\Observer\Quotation\Block\Adminhtml\Quote\GridObserver"/>
+    </event>
+    <event name="desk_ticket_save_after">
+        <observer name="salesrep_save_ticket" instance="Cart2Quote\SalesRep\Observer\Desk\Model\TicketObserver"/>
+    </event>
+    <event name="desk_ticket_load_after">
+        <observer name="salesrep_add_admin_user" instance="Cart2Quote\SalesRep\Observer\Desk\Model\TicketAfterLoadObserver"/>
+    </event>
+    <event name="customer_load_after">
+        <observer name="salesrep_add_admin_user" instance="Cart2Quote\SalesRep\Observer\Customer\Model\CustomerAfterLoadObserver"/>
+    </event>
+    <event name="customer_save_after">
+        <observer name="salesrep_add_admin_user" instance="Cart2Quote\SalesRep\Observer\Customer\Model\CustomerAfterSaveObserver"/>
+    </event>
+    <event name="eav_collection_abstract_load_before">
+        <observer name="salesrep_add_admin_user" instance="Cart2Quote\SalesRep\Observer\Customer\Model\ResourceModel\Customer\CollectionObserver"/>
+    </event>
+    <event name="admin_quotation_quote_create_after">
+        <observer name="salesrep_add_after_creation" instance="Cart2Quote\SalesRep\Observer\Quotation\Adminhtml\Quote\CreateObserver"/>
+    </event>
+    <event name="quotation_event_after_quick_quote_request">
+        <observer name="salesrep_add_after_quick_quote" instance="Cart2Quote\SalesRep\Observer\Quotation\Quote\Request\QuickQuoteObserver"/>
+    </event>
+    <event name="sales_order_place_after">
+        <observer name="salesrep_adminhtml_sales_order_place_after" instance="Cart2Quote\SalesRep\Observer\Magento\Sales\Adminhtml\OrderCreateProcessObserver"/>
+    </event>
+</config>

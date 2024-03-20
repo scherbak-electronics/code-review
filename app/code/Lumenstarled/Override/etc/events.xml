@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+	<!-- <event name="quotation_controller_after_update_quote">
+        <observer name="update_custom_fields" instance="Lumenstarled\Override\Observer\updateCustomFieldsToQuote" />
+    </event> -->
+	<event name="quotation_event_after_quote_request">
+        <observer name="update_custom_fields" instance="Lumenstarled\Override\Observer\updateCustomFieldsToQuote" />
+    </event>
+	
+</config>

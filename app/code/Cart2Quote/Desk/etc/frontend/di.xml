@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright (c) 2019. Cart2Quote B.V. All rights reserved.
+  ~ See COPYING.txt for license details.
+  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <type name="Magento\Contact\Block\ContactForm">
+        <plugin name="Cart2QuoteDeskMagentoContactBlockContactForm" type="Cart2Quote\Desk\Plugin\Magento\Contact\Block\ContactForm" sortOrder="1"/>
+    </type>
+    <virtualType name="\Cart2Quote\Desk\Block\Product\View\Type\Downloadable" type="\Cart2Quote\Desk\Block\Product\View\Enquire">
+        <arguments>
+            <argument name="enquireButtonDownloadable" xsi:type="object">\Cart2Quote\Desk\Block\Product\View\Enquire</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="\Cart2Quote\Desk\Block\Product\View\Enquire" type="\Cart2Quote\Desk\Block\Product\Tab\Form">
+        <arguments>
+            <argument name="enquireBlockForm" xsi:type="object">\Cart2Quote\Desk\Block\Product\Tab\Form</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="\Cart2Quote\Desk\Block\Product\View\Enquiry\Form" type="\Cart2Quote\Desk\Block\Product\Tab\Form">
+        <arguments>
+            <argument name="formBlockForm" xsi:type="object">\Cart2Quote\Desk\Block\Product\Tab\Form</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="\Cart2Quote\Desk\Block\Product\View\Enquiry\Success" type="\Cart2Quote\Desk\Block\Product\Tab\Form">
+        <arguments>
+            <argument name="successBlock" xsi:type="object">\Cart2Quote\Desk\Block\Product\Tab\Form</argument>
+        </arguments>
+    </virtualType>
+</config>

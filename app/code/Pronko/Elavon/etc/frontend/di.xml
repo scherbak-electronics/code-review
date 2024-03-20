@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Pronko Consulting
+ * See LICENSE for license details.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Payment\Model\CcGenericConfigProvider">
+        <arguments>
+            <argument name="methodCodes" xsi:type="array">
+                <item name="elavon" xsi:type="string">elavon</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="elavonCcConfigProvider" type="Magento\Payment\Model\CcGenericConfigProvider">
+        <arguments>
+            <argument name="methodCodes" xsi:type="array">
+                <item name="elavon" xsi:type="string">elavon</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Pronko\Elavon\Ui\StrategyConfigProvider">
+        <arguments>
+            <argument name="configProviders" xsi:type="array">
+                <item name="redirect" xsi:type="object">Pronko\Elavon\Ui\RedirectConfigProvider</item>
+                <item name="cc-form" xsi:type="object">Pronko\Elavon\Ui\RemoteConfigProvider</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Checkout\Model\CompositeConfigProvider">
+        <arguments>
+            <argument name="configProviders" xsi:type="array">
+                <item name="elavon_config_provider" xsi:type="object">Pronko\Elavon\Ui\StrategyConfigProvider</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Pronko\Elavon\Block\Info">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item xsi:type="string" name="is_secure_mode">1</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

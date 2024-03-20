@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_ImageGallery
+ * @author    Webkul
+ * @copyright Copyright (c) 2010-2016 Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Webkul_ImageGallery::imagegallery" title="Image Gallery" module="Webkul_ImageGallery" sortOrder="10" resource="Webkul_ImageGallery::imagegallery"/>
+        <add id="Webkul_ImageGallery::images" title="Manage Images" module="Webkul_ImageGallery" sortOrder="1" parent="Webkul_ImageGallery::imagegallery" action="imagegallery/images" resource="Webkul_ImageGallery::images"/>
+        <add id="Webkul_ImageGallery::gallery" title="Manage Gallery" module="Webkul_ImageGallery" sortOrder="1" parent="Webkul_ImageGallery::imagegallery" action="imagegallery/gallery" resource="Webkul_ImageGallery::gallery"/>
+        <add id="Webkul_ImageGallery::groups" title="Manage Groups" module="Webkul_ImageGallery" sortOrder="1" parent="Webkul_ImageGallery::imagegallery" action="imagegallery/groups" resource="Webkul_ImageGallery::groups"/>
+        <add id="Webkul_ImageGallery::system_config" title="Gallery Settings" module="Magento_Config" sortOrder="20" parent="Webkul_ImageGallery::imagegallery" action="adminhtml/system_config" resource="Magento_Config::config"/>
+    </menu>
+</config>

@@ -1,0 +1,8 @@
+table{width: 100%!important;}
+a,.ii a[href]{background-color: transparent!important;}
+.cookie-status-message {
+
+display: none!important;
+
+}
+body.catalog-product-view .loading-mask{display: none!important;}

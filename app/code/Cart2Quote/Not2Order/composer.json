@@ -1,0 +1,21 @@
+{
+  "name": "cart2quote/module-not2order",
+  "description": "A Magento extension from the folks of Cart2Quote that removes the order button or the prices of products in a Magento store.",
+  "type": "magento2-module",
+  "version": "2.1.4",
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Cart2Quote\\Not2Order\\": ""
+    }
+  },
+  "authors": [
+    {
+      "name": "Cart2Quote",
+      "homepage": "https://www.cart2quote.com/",
+      "role": "Product Owner"
+    }
+  ]
+}

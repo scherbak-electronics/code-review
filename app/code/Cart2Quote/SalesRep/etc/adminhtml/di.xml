@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright (c) 2023. Cart2Quote B.V. All rights reserved.
+  ~ See COPYING.txt for license details.
+  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Cart2Quote\Quotation\Model\ResourceModel\Quote\Grid\Collection" type="Cart2Quote\SalesRep\Model\ResourceModel\Quote\Grid\Collection" />
+    <preference for="Magento\Sales\Model\ResourceModel\Order\Grid\Collection" type="Cart2Quote\SalesRep\Model\ResourceModel\Order\Grid\Collection" />
+    <virtualType name="Cart2Quote\SalesRep\Model\AdminUser\Grid\Options" type="Cart2Quote\SalesRep\Model\AdminUser\Collection">
+        <arguments>
+            <argument name="addUnassigned" xsi:type="boolean">false</argument>
+        </arguments>
+    </virtualType>
+</config>

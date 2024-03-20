@@ -1,0 +1,26 @@
+.products-grid .cdz-product-bottom .action.tocart {
+	display: none;
+}
+.qs-modal .modal-popup .modal-content .quickshop-wrapper .quickshop-media.product.media {
+    width: 50% !important;
+}
+.modal-inner-wrap #quickshop-info-main {
+    width: 100% !important;
+}
+.catalog-product-view .block-actions {
+	display: none;
+}
+.product-item-details .product-item-name + .product-item-pricing {
+	margin-top: 35px;
+}
+#miniquote-content-wrapper .item.product.product-item .product {
+	overflow: auto;
+}
+#miniquote-content-wrapper .product-item-details .product {
+    overflow: auto;
+}
+@media (min-width: 768px){
+	.cdz-horizontal-menu .groupmenu { 
+		background-color: #004664;
+	}
+}

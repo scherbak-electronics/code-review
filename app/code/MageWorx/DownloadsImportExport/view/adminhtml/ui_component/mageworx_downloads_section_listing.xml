@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Ui/etc/ui_configuration.xsd">
+    <listingToolbar name="listing_top">
+        <exportButton name="export_button" class="MageWorx\DownloadsImportExport\Ui\Component\ExportButton">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="options" xsi:type="array">
+                        <item name="csv" xsi:type="array">
+                            <item name="value" xsi:type="string">csv</item>
+                            <item name="label" xsi:type="string">CSV</item>
+                            <item name="url" xsi:type="string">mageworx_downloads/section/exportCsv</item>
+                        </item>
+                    </item>
+                    <item name="selectProvider" xsi:type="string">mageworx_downloads_section_listing.mageworx_downloads_section_listing.mageworx_downloads_section_columns.ids</item>
+                </item>
+            </argument>
+        </exportButton>
+    </listingToolbar>
+</listing>

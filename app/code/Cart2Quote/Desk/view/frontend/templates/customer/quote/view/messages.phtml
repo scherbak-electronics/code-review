@@ -1,0 +1,25 @@
+<?php
+/**
+ * Copyright (c) 2019. Cart2Quote B.V. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var Cart2Quote\Desk\Block\Customer\Ticket\View\Message $block */
+?>
+
+<div class="ticket-messages">
+    <?php if ($block->getTicketId()): ?>
+        <?php echo $block->getChildHtml('ticket.messages.form.edit') ?>
+    <?php else: ?>
+        <?php echo $block->getChildHtml('ticket.messages.form.new') ?>
+    <?php endif; ?>
+    <div id="ticket_messages_details"
+         data-last-id="<?php echo $block->getLastId() ?>"
+         data-ticket-id="<?php echo $block->getTicketId() ?>"
+         data-mage-init='{"ajaxUpdateContent":{"url": "<?php echo $block->getAjaxUpdateMessagesUrl() ?>"}}'>
+        <?php foreach ($block->getMessages() as $key => $message) : ?>
+            <?php echo $block->getChildBlock('ticket.message')->setKey($key)->setMessage($message)->toHtml() ?>
+        <?php
+        endforeach; ?>
+    </div>
+</div>

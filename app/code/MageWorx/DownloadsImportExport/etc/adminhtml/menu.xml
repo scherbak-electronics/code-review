@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="MageWorx_DownloadsImportExport::sections" title="Import/Export Sections" sortOrder="40" module="MageWorx_DownloadsImportExport" parent="Magento_Backend::system_convert" action="mageworx_downloads/section/importExport" resource="MageWorx_DownloadsImportExport::sections"/>
+        <add id="MageWorx_DownloadsImportExport::attachments" title="Import/Export Attachments" sortOrder="40" module="MageWorx_DownloadsImportExport" parent="Magento_Backend::system_convert" action="mageworx_downloads/attachment/importExport" resource="MageWorx_DownloadsImportExport::attachments"/>
+    </menu>
+</config>

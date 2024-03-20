@@ -1,0 +1,77 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+
+<style type="text/css">
+.contact-index-index .column:not(.sidebar-additional) .form.contact{
+    min-width: 550px!important;
+}
+</style>
+<form class="form contact"
+      action="<?php echo $block->getFormAction(); ?>"
+      id="contact-form"
+      method="post"
+      data-hasrequired="<?php echo __('* Required Fields') ?>"
+      data-mage-init='{"validation":{}}'>
+    <fieldset class="fieldset">
+        <legend class="legend"><span><?php echo __('Write Us') ?></span></legend><br />
+
+        <!--<div class="contact_info">
+            <ul class="contact_info_list">
+                <li><span class="fa fa-phone">&nbsp;</span>Toll Free: 1.866.852.7857 | Local: 604.484.9394</li>
+                <li class="last"><span class="fa fa-envelope">&nbsp;</span>Email: sales@lumenstarled.com</li>
+            </ul>
+        </div>-->
+        <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('contact_info_top')->toHtml();?>
+
+        <div class="field note no-label"><?php echo __('Jot us a note and we’ll get back to you as quickly as possible.') ?></div>
+        <div class="field name required">
+            <div class="control">
+                <input placeholder="<?php echo __('Name') ?>" name="name" id="name" title="<?php echo __('Name') ?>" value="<?php echo $block->escapeHtml($this->helper('Magento\Contact\Helper\Data')->getUserName()) ?>" class="input-text" type="text" data-validate="{required:true}"/>
+            </div>
+        </div>
+        <div class="field email required">
+            <div class="control">
+                <input placeholder="<?php echo __('Email') ?>" name="email" id="email" title="<?php echo __('Email') ?>" value="<?php echo $block->escapeHtml($this->helper('Magento\Contact\Helper\Data')->getUserEmail()) ?>" class="input-text" type="email" data-validate="{required:true, 'validate-email':true}"/>
+            </div>
+        </div>
+        <div class="field telephone">
+            <div class="control">
+                <input placeholder="<?php echo __('Phone Number') ?>" name="telephone" id="telephone" title="<?php echo __('Phone Number') ?>" value="" class="input-text" type="text" />
+            </div>
+        </div>
+
+        <div class="field business_name required">
+            <div class="control">
+                <input placeholder="<?php echo __('Business Name') ?>" name="business_name" id="business_name" title="<?php echo __('Business Name') ?>" value="" class="input-text" type="text" data-validate="{required:true}"/>
+            </div>
+        </div>
+
+        <div class="field website">
+            <div class="control">
+                <input placeholder="<?php echo __('Website') ?>" type="text" name="website" id="website" value="" title="<?php echo __('Website') ?>" class="input-text" data-validate="{'validate-clean-url':true}">
+            </div>
+        </div>
+
+        <div class="field comment required">
+            <div class="control">
+                <textarea placeholder="<?php echo __('What’s on your mind?') ?>" name="comment" id="comment" title="<?php echo __('What’s on your mind?') ?>" class="input-text" cols="5" rows="3" data-validate="{required:true}"></textarea>
+            </div>
+        </div>
+        <?php echo $block->getChildHtml('form.additional.info'); ?>
+    </fieldset>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <input type="hidden" name="hideit" id="hideit" value="" />
+            <button type="submit" title="<?php echo __('Submit') ?>" class="action submit primary">
+                <span><?php echo __('Submit') ?></span>
+            </button>
+        </div>
+    </div>
+</form>

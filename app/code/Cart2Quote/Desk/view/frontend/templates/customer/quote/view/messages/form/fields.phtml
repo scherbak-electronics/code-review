@@ -1,0 +1,54 @@
+<?php
+/**
+ * Copyright (c) 2019. Cart2Quote B.V. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var Cart2Quote\Desk\Block\Customer\Ticket\View\Message $block */
+?>
+<?php $quote = $block->getQuote() ?>
+<?php if (!$block->canEditTitle()): ?>
+    <div class="ticket-subject">
+        <div class="ticket-subject-value">
+            <input name="ticket[subject]"
+                   type="text"
+                   value="<?php echo $block->getSubject()?>"
+                   placeholder="<?php echo __("Enter Subject") ?>"
+                   id="ticket-subject"
+                   readonly
+                   class="input-text" />
+        </div>
+    </div>
+<?php else: ?>
+    <div class="ticket-subject">
+        <div class="ticket-subject-value special-title">
+            <input name="ticket[subject]"
+                   type="text"
+                   value="<?php echo $block->getSubject()?>"
+                   placeholder="<?php echo __("Enter Subject") ?>"
+                   id="ticket-subject"
+                   class="input-text required-entry" />
+        </div>
+    </div>
+<?php endif; ?>
+<div class="create-message">
+        <textarea name="message[message]"
+                  id="comment"
+                  title="What’s on your mind?"
+                  class="input-text"
+                  cols="5" rows="3"
+                  data-validate="{required:true}"
+                  aria-required="true"
+                  placeholder="<?php echo __("Enter your message") ?>"></textarea>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <input type="hidden" name="hideit" id="hideit" value="">
+            <?php if (isset($quote)) : ?>
+                <input type="hidden" name="quote_id" id="quote_id" value="<?php echo $quote->getId()?>">
+            <?php endif; ?>
+            <button type="submit" title="Submit" class="action submit primary" id="send-message-button">
+                <span><?php echo __("Send") ?></span>
+            </button>
+        </div>
+    </div>
+</div>

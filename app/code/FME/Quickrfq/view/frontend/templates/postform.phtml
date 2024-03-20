@@ -1,0 +1,165 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+ <!--<div class="note-request">Not request product, Please request product from product page.</div>!-->
+<?php
+
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance(); 
+$session = $objectManager->get('Magento\Customer\Model\Session');
+$product_id =null;
+if(is_null($session->getTestKey())){
+      $product_id =isset($_GET['id'])?$_GET['id']:"";
+}else{
+     $product_id =$session->getTestKey();
+}
+
+$_product = $objectManager->get('Magento\Catalog\Model\Product')->load($product_id);
+
+$imageHelper  = $objectManager->get('\Magento\Catalog\Helper\Image');
+
+$image_url = $imageHelper->init($_product, 'product_page_image_small')->setImageFile($_product->getFile())->resize(300, 300)->getUrl();
+?>
+<div class="container-full <?= $session->getTestKey(); ?>">
+    <form class="form quickrfq"
+    action="<?php /* @escapeNotVerified */ echo $block->getFormAction(); ?>"
+    id="quickrfq_form"
+    enctype="multipart/form-data"
+    method="post"
+    onsubmit="return myFunction2()"
+    data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>"
+    data-mage-init='{"validation":{}}'>
+    <div class="container-intro">
+        <div class="row">
+            <div class="col-md-14">
+                <div class="name-product-ask"><?= $_product->getName(); ?></div>
+            <div class="description-product-ask"><?= $_product->getDescription(); ?></div>
+            </div>
+            <div class="col-md-9"><img src="<?= $image_url;?>"></div>
+        </div>
+    </div>
+    <fieldset class="fieldset">
+        <div class="field name">
+            <div class="control">
+                <!-- replay company to name product -->
+                <input name="company" id="company" value="<?= $_product->getName(); ?>" class="input-text" type="hidden" data-validate="{required:true}"/>
+                <!-- replay project_title to images product -->
+                <input name="project_title" id="project_title" value="<?= $image_url; ?>" class="input-text" type="hidden" />
+            </div>
+        </div>
+        <div class="field contact_name required">
+            <label class="label" for="contact_name"><span><?php /* @escapeNotVerified */ echo __('Contact Name') ?></span></label>
+            <div class="control">
+                <input name="contact_name" id="contact_name" title="<?php /* @escapeNotVerified */ echo __('Contact Name') ?>" value="<?php echo $block->escapeHtml($this->helper('Magento\Contact\Helper\Data')->getUserName()) ?>" class="input-text" type="text" data-validate="{required:true}"/>
+            </div>
+        </div>
+        <div class="field email required">
+            <label class="label" for="email"><span><?php /* @escapeNotVerified */ echo __('Email') ?></span></label>
+            <div class="control">
+                <input name="email" id="email" title="<?php /* @escapeNotVerified */ echo __('Email') ?>" value="<?php echo $block->escapeHtml($this->helper('Magento\Contact\Helper\Data')->getUserEmail()) ?>" class="input-text" type="email" data-validate="{required:true, 'validate-email':true}"/>
+            </div>
+        </div>
+        
+        <div class="field overview required">
+            <label class="label" for="overview"><span><?php /* @escapeNotVerified */ echo __('Please write your question...(min.50, max 2000 characters)') ?></span></label>
+            <div class="control">
+                <textarea name="overview" id="overview" title="<?php /* @escapeNotVerified */ echo __('Please write your question') ?>" class="input-text" cols="5" rows="7" data-validate="{required:true}"></textarea>
+            </div>
+        </div>
+        
+        <div class="field">
+            
+            <?php if($block->isCaptchaEnable()): ?>
+             <div class="g-recaptcha"  name="recaptcha" id="recaptcha" data-sitekey="<?php echo $block->getPublicKey(); ?>"></div>
+             <div ><p style="
+             cursor: auto;
+             /* text-decoration: underline; */
+             color: #9b9b9b;
+             padding-left: 235px;
+             font-family: Roboto,helvetica,arial,sans-serif;
+             font-size: 8px;
+             font-weight: 400;
+             margin-top: -35px;
+             ">by <a style="color: #9b9b9b;" rel="no-follow" target="_Blank" href="https://www.fmeextensions.com/request-for-quote-magento-2.html">Fmeextensions</a></p>  </div>
+             <br>
+             
+             
+         <?php endif; ?>
+     </div>
+     
+     
+     <?php echo $block->getChildHtml('form.additional.info'); ?>
+    </fieldset>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <input type="hidden" name="hideit" id="hideit" value="" />
+            <button type="submit" title="<?php /* @escapeNotVerified */ echo __('Submit') ?>" class="action submit primary">
+                <span><?php /* @escapeNotVerified */ echo __('Submit') ?></span>
+            </button>
+        </div>
+    </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+    function myFunction2() {
+        var exists = document.getElementById("g-recaptcha-response");
+
+        if(exists == null){
+            
+        }
+        
+        else{
+
+            var check = document.getElementById("g-recaptcha-response").value;
+           // alert(check);
+           if(check=='' || check == null){
+            document.getElementById("recaptcha").style.border = "1px solid #ea0e0e";
+            return false;
+        }
+        else{
+            document.getElementById("recaptcha").style.border = "none";
+            return true;
+        }
+    }
+    
+    
+}
+</script>
+
+
+<style type="text/css">
+
+#recaptcha {
+  display: inline-block;
+  position: relative;
+}
+@media (min-width: 768px){
+    .container-full {
+        padding: 0 10%;
+    }
+}
+.quickrfq-index-index .page-title-wrapper {
+    text-align: center;
+}
+.name-product-ask {
+    margin: 0 0 5px;
+    font: 500 20px/1.35 Poppins, Helvetica Neue, Verdana, Arial, sans-serif;
+    text-transform: initial;
+    color: #282828;
+}
+.quickrfq-index-index ..container-full .fieldset {
+    margin-bottom: 10px;
+}
+.container-intro {
+    border-bottom: 1px solid #ccc;
+}
+.note-request {
+    text-align: center;
+}
+</style>

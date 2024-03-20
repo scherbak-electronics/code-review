@@ -1,0 +1,87 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * @var \Magento\Theme\Block\Html\Header\Logo $block
+ */
+?>
+<?php $storeName = $block->getThemeName() ? $block->getThemeName() : $block->getLogoAlt();?>
+<span data-action="toggle-nav" class="action nav-toggle"><span><?php echo __('Toggle Nav') ?></span></span>
+<?php if ($block->isHomePage()):?>
+    <strong class="logo">
+<?php else: ?>
+    <a class="logo" href="<?php echo $block->getUrl(''); ?>" title="<?php echo $storeName ?>">
+<?php endif ?>
+        <img class="main-logo" src="<?php echo $block->getLogoSrc() ?>"
+             alt="<?php echo $block->getLogoAlt() ?>"
+             <?php //echo $block->getLogoWidth() ? 'width="' . $block->getLogoWidth() . '"' : '' ?>
+             <?php ///echo $block->getLogoHeight() ? 'height="' . $block->getLogoHeight() . '"' : '' ?>
+        />		
+        <img class="small-logo" src="<?php echo $block->getLogoSrc() ?>"
+             alt="<?php echo $block->getLogoAlt() ?>"
+             <?php echo $block->getLogoWidth() ? 'width="' . $block->getLogoWidth() . '"' : '' ?>
+             <?php echo $block->getLogoHeight() ? 'height="' . $block->getLogoHeight() . '"' : '' ?>
+        />		
+<?php if ($block->isHomePage()):?>
+    </strong>
+<?php else:?>
+    </a>
+<?php endif?>
+
+<?php
+//$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+//$welcome = $objectManager->get('Magento\Theme\Block\Html\Header')->getWelcome();
+//if($welcome):
+?>
+   <!-- <div class="welcome_txt">
+        <span><?php ///echo $welcome;?></span>
+    </div>!-->
+<?php //endif;?>
+
+
+<div class="wholesale_txt mobile">
+    <span><?php echo __('Wholesale Lighting Distributor');?></span>
+</div>
+
+<script type="text/javascript">
+require(['jquery'],function($){      
+      var logoSrc = "<?php echo $block->getLogoSrc() ?>";
+      var imageType = logoSrc.substr(-4);
+	var imageName = logoSrc.substr(0, logoSrc.length - 4);
+	imageName += "-small" + imageType;
+	$('.small-logo').attr('src',imageName);
+        ////////////////////////
+   
+    jQuery( document ).ready(function() {
+           var now = new Date();
+           var year = now.getFullYear();
+          var copy="Copyright © "+year+" LumenstarLED. All rights reserved.";
+             jQuery(".copyright .f-left").html("");
+            jQuery(".copyright .f-left").html(copy);
+            jQuery(".download_block .download_tab .title").attr("dir","close");
+            jQuery(".download_block .download_tab .title:first").attr("dir","open");
+            jQuery(".download_block .download_tab .title").click(function(){
+             jQuery(".download_block .download_tab .content").hide();
+             if(jQuery(this).attr("dir")=="open"){
+                    jQuery(".download_block .download_tab .title").attr("dir","close");
+                    jQuery(this).parent().find(".content").hide();   
+                     jQuery(this).attr("dir","close");
+             }else{
+                    jQuery(".download_block .download_tab .title").attr("dir","close");
+                    jQuery(this).attr("dir","open");
+                     jQuery(this).parent().find(".content").show();
+             }
+              
+               
+           });
+    });
+        
+    
+    /////////////////////////
+});
+</script>

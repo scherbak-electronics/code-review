@@ -1,0 +1,20 @@
+<?php
+/**
+ * Copyright (c) 2019. Cart2Quote B.V. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var Cart2Quote\Desk\Block\Adminhtml\Edit\Container\Messages\Message $block */
+?>
+
+<div class="single-message <?php echo $block->getMessageClasses() ?>">
+    <header>
+        <?php echo $block->getName() ?>
+        <span class="date-time">
+            <?php echo $block->getUpdatedAt() ?>
+        </span>
+    </header>
+    <div class="content">
+        <?php echo $block->getContent() ?>
+    </div>
+</div>

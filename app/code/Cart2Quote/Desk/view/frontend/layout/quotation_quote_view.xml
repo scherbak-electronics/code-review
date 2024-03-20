@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright (c) 2019. Cart2Quote B.V. All rights reserved.
+  ~ See COPYING.txt for license details.
+  -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Cart2Quote_Desk::css/style.css"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Cart2Quote\Desk\Block\Customer\Quote\Ticket\View" name="customer_ticket_view" as="ticket" cacheable="false" template="customer/ticket/view.phtml" after="quote.actions" ifconfig="desk_general/default_settings/quote_front_page_visibility">
+                <block class="Cart2Quote\Desk\Block\Customer\Ticket\View\Message" name="customer_ticket_view_messages" as="ticket.messages" cacheable="false" template="customer/quote/view/messages.phtml">
+                    <block class="Cart2Quote\Desk\Block\Customer\Ticket\View\Message" name="customer_ticket_view_message" as="ticket.message" cacheable="false" template="customer/ticket/view/message.phtml"/>
+                    <block class="Cart2Quote\Desk\Block\Customer\Ticket\View\Message" name="customer_ticket_view_messages_form_new" as="ticket.messages.form.new" cacheable="false" template="customer/quote/view/messages/form/new.phtml">
+                        <block class="Cart2Quote\Desk\Block\Customer\Ticket\View\Message" name="customer_ticket_view_messages_form_fields_new" as="ticket.messages.form.fields.new" cacheable="false" template="customer/quote/view/messages/form/fields.phtml"/>
+                    </block>
+                    <block class="Cart2Quote\Desk\Block\Customer\Ticket\View\Message" name="customer_ticket_view_messages_form_update" as="ticket.messages.form.edit" cacheable="false" template="customer/ticket/view/messages/form/edit.phtml">
+                        <block class="Cart2Quote\Desk\Block\Customer\Ticket\View\Message" name="customer_ticket_view_messages_form_fields_update" as="ticket.messages.form.fields.edit" cacheable="false" template="customer/quote/view/messages/form/fields.phtml"/>
+                    </block>
+                </block>
+                <block class="Cart2Quote\Desk\Block\Customer\Quote\Ticket\View" name="customer_ticket_view_details" as="ticket.details" cacheable="false" template="customer/ticket/view/details.phtml"/>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

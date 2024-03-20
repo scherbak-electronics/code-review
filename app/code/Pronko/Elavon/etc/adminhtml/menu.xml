@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Pronko Consulting
+ * See LICENSE for license details.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add
+                id="Pronko_Elavon::reports"
+                title="Elavon Reports"
+                module="Pronko_Elavon"
+                sortOrder="60"
+                parent="Magento_Reports::report"
+                resource="Pronko_Elavon::report_transaction"/>
+        <add
+                id="Pronko_Elavon::report_transaction"
+                title="Transactions"
+                module="Pronko_Elavon"
+                sortOrder="100"
+                parent="Pronko_Elavon::reports"
+                action="elavon/report"
+                resource="Pronko_Elavon::report_transaction"/>
+    </menu>
+</config>

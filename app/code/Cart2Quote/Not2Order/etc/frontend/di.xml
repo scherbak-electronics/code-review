@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright (c) 2020. Cart2Quote B.V. All rights reserved.
+  ~ See COPYING.txt for license details.
+  -->
+
+<!--
+/**
+ * Cart2Quote
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+   <preference for="Magento\Framework\Pricing\Render" type="Cart2Quote\Not2Order\Block\Magento\Framework\Pricing\Render"/>
+   <preference for="Magento\Wishlist\CustomerData\Wishlist" type="Cart2Quote\Not2Order\CustomerData\Wishlist"/>
+   <preference for="Magento\Sales\Helper\Reorder" type="Cart2Quote\Not2Order\Helper\Reorder"/>
+   <type name="\Magento\ConfigurableProduct\Block\Product\View\Type\Configurable">
+       <plugin name="Cart2Quote\Not2Order\Plugin\Magento\ConfigurableProduct\Block\Product\View\Type\ConfigurablePlugin" type="Cart2Quote\Not2Order\Plugin\Magento\ConfigurableProduct\Block\Product\View\Type\ConfigurablePlugin" sortOrder="1"/>
+   </type>
+   <type name="Cart2Quote\Quotation\Helper\StockCheck">
+      <plugin name="Cart2Quote\Not2Order\Plugin\Cart2Quote\Quotation\Helper\StockCheckPlugin" type="Cart2Quote\Not2Order\Plugin\Cart2Quote\Quotation\Helper\StockCheckPlugin" sortOrder="1"/>
+   </type>
+   <type name="\Magento\Catalog\Block\Product\View">
+      <plugin name="Cart2Quote\Not2Order\Plugin\Magento\Catalog\Block\Product\ViewPlugin" type="Cart2Quote\Not2Order\Plugin\Magento\Catalog\Block\Product\ViewPlugin" sortOrder="1"/>
+   </type>
+   <type name="\Magento\Catalog\Block\Product\ListProduct">
+      <plugin name="Cart2Quote\Not2Order\Plugin\Magento\Catalog\Block\Product\ListProductPlugin" type="Cart2Quote\Not2Order\Plugin\Magento\Catalog\Block\Product\ListProductPlugin" sortOrder="1"/>
+   </type>
+   <type name="\Magento\Catalog\Block\Product\Compare\ListCompare">
+      <plugin name="Cart2Quote\Not2Order\Plugin\Magento\Catalog\Block\Product\Compare\ListComparePlugin" type="Cart2Quote\Not2Order\Plugin\Magento\Catalog\Block\Product\Compare\ListComparePlugin" sortOrder="1"/>
+   </type>
+   <type name="\Magento\Wishlist\Block\Customer\Wishlist">
+      <plugin name="Cart2Quote\Not2Order\Plugin\Magento\Wishlist\Block\Customer\Wishlist\ViewPlugin" type="Cart2Quote\Not2Order\Plugin\Magento\Wishlist\Block\Customer\Wishlist\ViewPlugin" sortOrder="1"/>
+   </type>
+   <type name="\Magento\CatalogWidget\Block\Product\ProductsList">
+      <plugin name="Cart2Quote\Not2Order\Plugin\Magento\CatalogWidget\Block\Product\ProductListPlugin" type="Cart2Quote\Not2Order\Plugin\Magento\CatalogWidget\Block\Product\ProductListPlugin" sortOrder="1"/>
+   </type>
+   <type name="Magento\Checkout\Block\Cart\Item\Renderer">
+      <plugin name="Cart2Quote\Not2Order\Plugin\Magento\Checkout\Block\Cart\Item\Renderer" type="Cart2Quote\Not2Order\Plugin\Magento\Checkout\Block\Cart\Item\Renderer"/>
+   </type>
+   <type name="Cart2Quote\Quotation\CustomerData\Quote">
+      <plugin name="Cart2Quote\Not2Order\Plugin\Cart2Quote\Quotation\CustomerData\Quote" type="Cart2Quote\Not2Order\Plugin\Cart2Quote\Quotation\CustomerData\Quote"/>
+   </type>
+   <type name="Magento\Sales\Block\Reorder\Sidebar">
+      <plugin name="Cart2Quote\Not2Order\Plugin\Magento\Sales\Block\Reorder\SidebarPlugin" type="Cart2Quote\Not2Order\Plugin\Magento\Sales\Block\Reorder\SidebarPlugin"/>
+   </type>
+   <type name="Magento\Bundle\Block\Catalog\Product\View\Type\Bundle">
+      <plugin name="BundleOptionPriceRemover" type="Cart2Quote\Not2Order\Plugin\Magento\Bundle\Block\Catalog\Product\View\Type\BundlePlugin"/>
+   </type>
+   <type name="Magento\Bundle\Helper\Catalog\Product\Configuration">
+      <plugin name="Cart2Quote\Not2Order\Plugin\Magento\Bundle\Helper\Catalog\Product\ConfigurationPlugin" type="Cart2Quote\Not2Order\Plugin\Magento\Bundle\Helper\Catalog\Product\ConfigurationPlugin"/>
+   </type>
+   <type name="Magento\Checkout\Block\Cart\Sidebar">
+      <plugin name="Cart2Quote\Not2Order\Plugin\Magento\Checkout\Block\Cart\SidebarPlugin" type="Cart2Quote\Not2Order\Plugin\Magento\Checkout\Block\Cart\SidebarPlugin"/>
+   </type>
+   <type name="Magento\AdvancedCheckout\Model\Cart">
+      <plugin name="Cart2Quote\Not2Order\Plugin\Magento\AdvancedCheckout\Model\Cart" type="Cart2Quote\Not2Order\Plugin\Magento\AdvancedCheckout\Model\Cart"/>
+   </type>
+    <type name="Magento\CatalogSearch\Block\Result">
+        <plugin name="Cart2Quote\Not2Order\Plugin\Magento\CatalogSearch\Block\Result" type="Cart2Quote\Not2Order\Plugin\Magento\CatalogSearch\Block\ResultPlugin"/>
+    </type>
+   <type name="Magento\Tax\Block\Item\Price\Renderer">
+      <plugin name="Cart2Quote\Not2Order\Plugin\Magento\Tax\Block\Item\Price\RendererPlugin" type="Cart2Quote\Not2Order\Plugin\Magento\Tax\Block\Item\Price\RendererPlugin" sortOrder="999"/>
+   </type>
+   <type name="\Magento\Catalog\Block\Product\ProductList\Related">
+      <plugin name="Cart2Quote\Not2Order\Plugin\Magento\Catalog\Block\Product\ProductList\RelatedPlugin" type="Cart2Quote\Not2Order\Plugin\Magento\Catalog\Block\Product\ProductList\RelatedPlugin"/>
+   </type>
+</config>

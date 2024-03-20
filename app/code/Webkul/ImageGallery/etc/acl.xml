@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_ImageGallery
+ * @author    Webkul
+ * @copyright Copyright (c) 2010-2016 Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Webkul_ImageGallery::imagegallery" title="Image Gallery" sortOrder="10">
+                    <resource id="Webkul_ImageGallery::menu" title="Menu" sortOrder="10">
+                        <resource id="Webkul_ImageGallery::images" title="Manage Images" sortOrder="1" />
+                        <resource id="Webkul_ImageGallery::gallery" title="Manage Gallery" sortOrder="2" />
+                        <resource id="Webkul_ImageGallery::groups" title="Manage Groups" sortOrder="3" />
+                        <resource id="Webkul_ImageGallery::system_config" title="Gallery Settings" sortOrder="4" />
+                    </resource>
+                </resource>
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Webkul_ImageGallery::config_imagegallery" title="Gallery Settings" sortOrder="10" />
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

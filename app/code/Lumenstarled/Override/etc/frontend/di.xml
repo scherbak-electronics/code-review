@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+	<type name="Cart2Quote\Quotation\Block\Quote\View">
+        <plugin name="lumenstar_plugin_quotation_getaccepturl" type="Lumenstarled\Override\Plugin\Cart2Quote\Quotation\Block\Quote\View" />
+	</type>
+	<type name="Magento\Customer\Controller\Address\FormPost">
+        <plugin name="lumenstar_plugin_customer_address_formpost" type="Lumenstarled\Override\Plugin\Magento\Customer\Controller\Address\FormPost" />
+	</type>
+	<type name="Magento\Customer\Block\Account\Dashboard\Address">
+        <plugin name="lumenstar_plugin_customer_address_dashboard" type="Lumenstarled\Override\Plugin\Magento\Customer\Block\Account\Dashboard\Address" />
+	</type>
+	<preference for="Magento\Customer\Block\Address\Edit"
+			type="Lumenstarled\Override\Rw\Magento\Customer\Block\Address\Edit" />
+</config>

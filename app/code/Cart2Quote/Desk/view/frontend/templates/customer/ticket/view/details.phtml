@@ -1,0 +1,31 @@
+<?php
+/**
+ * Copyright (c) 2019. Cart2Quote B.V. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var Cart2Quote\Desk\Block\Customer\Ticket\View $block */
+?>
+
+<?php $ticket = $block->getTicketData() ?>
+<div class="ticket-details" data-mage-init='{"collapsible":{ "openedState": "active", "active": true, "collapsible": true}}'>
+    <span class="ticket-details-title special-title" data-role="title"><?php echo __("Ticket Details") ?></span>
+    <div class="ticket-details-content" data-role="content">
+        <div class="ticket-details-field">
+            <span class="ticket-details-label"><?php echo __("Status") ?></span>
+            <span class="ticket-details-value"><?php echo ucfirst($ticket->getStatus())?></span>
+        </div>
+        <div class="ticket-details-field">
+            <span class="ticket-details-label"><?php echo __("Priority") ?></span>
+            <span class="ticket-details-value"><?php echo ucfirst($ticket->getPriority())?></span>
+        </div>
+        <div class="ticket-details-field">
+            <span class="ticket-details-label"><?php echo __("Created at") ?></span>
+            <span class="ticket-details-value"><?php echo $block->getCreatedAt()?></span>
+        </div>
+        <div class="ticket-details-field">
+            <span class="ticket-details-label"><?php echo __("Assigned to") ?></span>
+            <span class="ticket-details-value"><?php echo ucfirst($block->getAssignedTo())?></span>
+        </div>
+    </div>
+</div>

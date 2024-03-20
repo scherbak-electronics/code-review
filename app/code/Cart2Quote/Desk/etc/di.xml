@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright (c) 2019. Cart2Quote B.V. All rights reserved.
+  ~ See COPYING.txt for license details.
+  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Cart2Quote\Desk\Api\TicketRepositoryInterface"
+                type="Cart2Quote\Desk\Model\ResourceModel\TicketRepository" />
+    <preference for="Cart2Quote\Desk\Api\Data\TicketInterface" type="Cart2Quote\Desk\Model\Data\Ticket" />
+    <preference for="Cart2Quote\Desk\Api\Data\TicketSearchResultsInterface"
+                type="Magento\Framework\Api\SearchResults" />
+    <preference for="Cart2Quote\Desk\Api\MessageRepositoryInterface"
+                type="Cart2Quote\Desk\Model\ResourceModel\Ticket\MessageRepository" />
+    <preference for="Cart2Quote\Desk\Api\Data\MessageInterface" type="Cart2Quote\Desk\Model\Data\Ticket\Message" />
+    <preference for="Cart2Quote\Desk\Api\Data\MessageSearchResultsInterface"
+                type="Magento\Framework\Api\SearchResults" />
+    <preference for="Cart2Quote\Desk\Api\TicketMetadataManagementInterface"
+                type="Cart2Quote\Desk\Model\Metadata\TicketMetadataManagement" />
+</config>

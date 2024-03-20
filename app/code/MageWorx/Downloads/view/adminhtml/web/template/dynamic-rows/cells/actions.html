@@ -1,0 +1,22 @@
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<div class="attachments-grid-actions">
+    <a class="action-menu-item action"
+       if="downloadFileName"
+       text="downloadLabel"
+       target="_blank"
+       attr="href: getDownloadLink()"></a>
+    <button class="action-delete action"
+            attr="{'data-action': 'remove_row'}"
+            data-bind="
+                click: $data.deleteRecord.bind($data, $record().index, $record().recordId),
+                attr: {
+                    title: $parent.deleteButtonLabel
+                }">
+        <span translate="$parent.deleteButtonLabel"></span>
+    </button>
+</div>

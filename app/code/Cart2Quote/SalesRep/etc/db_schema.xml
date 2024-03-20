@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+
+<!--
+  ~ Copyright (c) 2023. Cart2Quote B.V. All rights reserved.
+  ~ See COPYING.txt for license details.
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="salesrep_type" resource="default" engine="innodb" comment="SalesRep Ticket Table">
+        <column xsi:type="varchar" name="type_id" nullable="false" length="255" comment="Linked Table Name"/>
+        <column xsi:type="boolean" name="deleted" nullable="false" default="0" comment="deleted flag"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="type_id"/>
+        </constraint>
+    </table>
+    <table name="salesrep_user" resource="default" engine="innodb" comment="SalesRep Quotation Table">
+        <column xsi:type="int" name="id" unsigned="true" nullable="false" identity="true" comment="id"/>
+        <column xsi:type="int" name="user_id" unsigned="true" nullable="false" comment="Admin user"/>
+        <column xsi:type="int" name="object_id" unsigned="true" nullable="false" comment="Linked Object"/>
+        <column xsi:type="varchar" name="type_id" nullable="false" length="255" comment="SalesRep Type"/>
+        <column xsi:type="boolean" name="is_main" comment="Is main user"/>
+        <column xsi:type="timestamp" name="created" nullable="false" default="CURRENT_TIMESTAMP" on_update="false" comment="Created date"/>
+        <column xsi:type="timestamp" name="updated" nullable="false" default="CURRENT_TIMESTAMP" on_update="true" comment="Last updated date"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+        <constraint xsi:type="unique" referenceId="SALESREP_USER_USER_ID_OBJECT_ID_TYPE_ID">
+            <column name="user_id"/>
+            <column name="object_id"/>
+            <column name="type_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="SALESREP_USER_TYPE_ID_SALESREP_TYPE_TYPE_ID" table="salesrep_user" column="type_id" referenceTable="salesrep_type" referenceColumn="type_id" onDelete="NO ACTION" />
+        <constraint xsi:type="foreign" referenceId="SALESREP_USER_USER_ID_ADMIN_USER_USER_ID" table="salesrep_user" column="user_id" referenceTable="admin_user" referenceColumn="user_id" onDelete="NO ACTION"/>
+    </table>
+    <table name="salesrep_order" resource="default" engine="innodb" comment="SalesRep Order Table">
+        <column xsi:type="int" name="id" unsigned="true" nullable="false" identity="true" comment="Id"/>
+        <column xsi:type="int" name="user_id" unsigned="true" nullable="false" comment="Admin user"/>
+        <column xsi:type="int" name="order" unsigned="true" nullable="false" comment="Order"/>
+        <column xsi:type="smallint" name="store_id" unsigned="true" nullable="false" comment="Store ID"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="SALESREP_ORDER_STORE_ID_STORE_STORE_ID" table="salesrep_order" column="store_id" referenceTable="store" referenceColumn="store_id" onDelete="CASCADE"/>
+        <constraint xsi:type="foreign" referenceId="SALESREP_ORDER_USER_ID_ADMIN_USER_USER_ID" table="salesrep_order" column="user_id" referenceTable="admin_user" referenceColumn="user_id" onDelete="CASCADE"/>
+    </table>
+</schema>

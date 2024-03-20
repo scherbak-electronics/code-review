@@ -1,0 +1,15 @@
+<div class="load_message" data-mage-init='{"Cart2Quote_DeskMessageTemplate/load": {}}'>
+    <label for="message" class="admin__field-label">
+        <?php echo $block->escapeHtml(__('Apply Message Template')) ?>
+    </label>
+    <div class="admin__field-control">
+        <select name="desk_template_message" id="desk_template_message" class="admin__control-select">
+            <option value=""><?php echo $block->escapeHtml(__('Please select a message')) ?></option>
+            <?php foreach ($block->getMessages() as $code => $label) : ?>
+                <option value="<?php echo $block->escapeHtml($code) ?>">
+                    <?php echo $block->escapeHtml($label) ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+</div>

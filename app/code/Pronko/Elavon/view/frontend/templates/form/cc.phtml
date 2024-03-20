@@ -1,0 +1,132 @@
+<?php
+/**
+ * Copyright © Pronko Consulting
+ * See LICENSE for license details.
+ */
+
+/**
+ * @var \Magento\Payment\Block\Transparent\Form $block
+ */
+$code = $block->escapeHtml($block->getMethodCode());
+$ccType = $block->getInfoData('cc_type');
+$ccExpMonth = $block->getInfoData('cc_exp_month');
+$ccExpYear = $block->getInfoData('cc_exp_year');
+?>
+<fieldset class="fieldset payment items ccard <?= $code ?>"
+          id="payment_form_<?= $code ?>" style="display: none;">
+    <div class="field type required">
+        <label for="<?= $code ?>_cc_type" class="label">
+            <span><?= $block->escapeHtml(__('Credit Card Type')) ?></span>
+        </label>
+        <div class="control">
+            <select id="<?= $code ?>_cc_type"
+                    data-mage-init='{
+                        "creditCardType": {
+                            "creditCardTypeContainer":"#<?= $code ?>_cc_type_ss_div"
+                        }
+                    }'
+                    name="payment[cc_type]" data-validate='{
+                        required:true,
+                        "validate-cc-type-select":"#<?= $code ?>_cc_number"
+                    }'
+                    class="select">
+                <option value=""><?= $block->escapeHtml(__('--Please Select--')) ?></option>
+                <?php foreach ($block->getCcAvailableTypes() as $typeCode => $typeName) : ?>
+                    <option value="<?= $block->escapeHtml($typeCode) ?>"
+                        <?php if ($typeCode == $ccType) : ?>
+                            selected="selected"
+                        <?php endif; ?>
+                    >
+                        <?= $block->escapeHtml($typeName) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+    </div>
+    <div class="field number required">
+        <label for="<?= $code ?>_cc_number" class="label">
+            <span><?= $block->escapeHtml(__('Credit Card Number')) ?></span>
+        </label>
+        <div class="control">
+            <input type="number" id="<?= $code ?>_cc_number" name="payment[cc_number]"
+                   title="<?= $block->escapeHtml(__('Credit Card Number')) ?>" class="input-text" value=""
+                   data-validate='{
+                       "required-number":true,
+                       "validate-cc-number":"#<?= $code ?>_cc_type",
+                       "validate-cc-type":"#<?= $code ?>_cc_type"
+                   }'/>
+        </div>
+    </div>
+    <div class="field date required" id="<?= $code ?>_cc_type_exp_div">
+        <label for="<?= $code ?>_expiration" class="label">
+            <span><?= $block->escapeHtml(__('Expiration Date')) ?></span>
+        </label>
+        <div class="control">
+            <div class="fields group group-2">
+                <div class="field no-label month">
+                    <div class="control">
+                        <select id="<?= $code ?>_expiration"
+                                name="payment[cc_exp_month]"
+                                class="select month"
+                                data-validate='{
+                                    required:true,
+                                    "validate-cc-exp":"#<?= $code ?>_expiration_yr"
+                                    }'>
+                            <?php foreach ($block->getCcMonths() as $k => $v) : ?>
+                                <option value="<?= $k ? $block->escapeHtml($k) : '' ?>"
+                                    <?php if ($k == $ccExpMonth) : ?>
+                                        selected="selected"
+                                    <?php endif; ?>
+                                >
+                                    <?= $block->escapeHtml($v) ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="field no-label year">
+                    <div class="control">
+                        <select id="<?= $code ?>_expiration_yr" name="payment[cc_exp_year]"
+                                class="select year" data-validate='{required:true}'>
+                            <?php foreach ($block->getCcYears() as $k => $v) : ?>
+                                <option value="<?= $k ? $block->escapeHtml($k) : '' ?>"
+                                    <?php if ($k == $ccExpYear) : ?>
+                                        selected="selected"
+                                    <?php endif; ?>
+                                >
+                                    <?= $block->escapeHtml($v) ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php if ($block->hasVerification()) : ?>
+        <div class="field cvv required" id="<?= $code ?>_cc_type_cvv_div">
+            <label for="<?= $code ?>_cc_cid" class="label">
+                <span><?= $block->escapeHtml(__('Card Verification Number')) ?></span>
+            </label>
+            <div class="control">
+                <input type="number" title="<?= $block->escapeHtml(__('Card Verification Number')) ?>"
+                       class="input-text cvv" id="<?= $code ?>_cc_cid" name="payment[cc_cid]"
+                       value=""
+                       data-validate='{
+                       "required-number":true,
+                       "validate-cc-cvn":"#<?= $code ?>_cc_type"}' />
+                <?php $content = '<img src=\"' . /* noEscape */ $block->getViewFileUrl('Magento_Checkout::cvv.png') .
+                    '\" alt=\"' .
+                    $block->escapeHtml(__('Card Verification Number Visual Reference')) .
+                    '\" title=\"' . $block->escapeHtml(__('Card Verification Number Visual Reference')) . '\" />'; ?>
+                <div class="note">
+                    <a href="#" class="action cvv" title="<?= $block->escapeHtml(__('What is this?')) ?>"
+                       data-mage-init='{"tooltip": {"content": "<?= $content ?>"}}'>
+                        <span><?= $block->escapeHtml(__('What is this?')) ?></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+    <?= /* noEscape */ $block->getChildHtml() ?>
+</fieldset>

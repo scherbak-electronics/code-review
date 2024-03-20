@@ -1,0 +1,20 @@
+<?php
+/**
+ * Copyright (c) 2020. Cart2Quote B.V. All rights reserved.
+ * See COPYING.txt for license details.
+ * @codingStandardsIgnoreFile
+ *
+ */
+?>
+
+<meta property="og:type" content="product" />
+<meta property="og:title"
+      content="<?= $block->escapeHtmlAttr($block->stripTags($block->getProduct()->getName())) ?>" />
+<meta property="og:image"
+      content="<?= $block->escapeUrl($block->getImage($block->getProduct(), 'product_base_image')->getImageUrl()) ?>" />
+<meta property="og:description"
+      content="<?= $block->escapeHtmlAttr($block->stripTags($block->getProduct()->getShortDescription())) ?>" />
+<meta property="og:url" content="<?= $block->escapeUrl($block->getProduct()->getProductUrl()) ?>" />
+<meta property="product:price:amount" content="<?= /* @escapeNotVerified */ 'Price on Request' ?>"/>
+    <?= $block->getChildHtml('meta.currency') ?>
+

@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="product.info.details">
+            <block class="MageWorx\Downloads\Block\Catalog\Product\Attachments"
+                   name="catalog.product.list.mageworx.downloads.attachments"
+                   as="mageworx_product_attachments"
+                   template="MageWorx_Downloads::attachment_container.phtml"
+                   group="detailed_info">
+                <arguments>
+                    <argument name="sort_order" xsi:type="string">100</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+
+        <referenceContainer name="product.info.details.after.wrapper.main">
+            <block class="Magento\Framework\View\Element\Template"
+                   before="product.reviews.wrapper"
+                   name="product.mageworx.attachments.wrapper"
+                   template="MageWorx_Downloads::attachment_section_wrapper.phtml"
+            >
+                <arguments>
+                    <argument name="title" translate="true" xsi:type="string">Attachments</argument>
+                </arguments>
+                <block class="MageWorx\Downloads\Block\Catalog\Product\Attachments"
+                       name="catalog.product.mageworx.downloads.attachments.full.width"
+                       as="mageworx_product_attachments"
+                       template="MageWorx_Downloads::attachment_container.phtml"
+                       group="detailed_info">
+                </block>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

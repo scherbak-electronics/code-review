@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright (c) 2019. Cart2Quote B.V. All rights reserved.
+  ~ See COPYING.txt for license details.
+  -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="customer_account"/>
+    <head>
+        <css src="Cart2Quote_Desk::css/style.css"/>
+    </head>
+    <body>
+        <referenceContainer name="page.main.title">
+            <block class="Magento\Framework\View\Element\Template" name="page.title.desk.customer.back" template="Cart2Quote_Desk::customer/ticket/view/back.phtml"/>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="Cart2Quote\Desk\Block\Customer\Ticket\View" name="customer_ticket_view" as="ticket" cacheable="false" template="customer/ticket/view.phtml">
+                <block class="Cart2Quote\Desk\Block\Customer\Ticket\View\Message" name="customer_ticket_view_messages" as="ticket.messages" cacheable="false" template="customer/ticket/view/messages.phtml">
+                    <block class="Cart2Quote\Desk\Block\Customer\Ticket\View\Message" name="customer_ticket_view_message" as="ticket.message" cacheable="false" template="customer/ticket/view/message.phtml"/>
+                    <block class="Cart2Quote\Desk\Block\Customer\Ticket\View\Message" name="customer_ticket_view_messages_form" as="ticket.messages.form" cacheable="false" template="customer/ticket/view/messages/form/edit.phtml">
+                        <block class="Cart2Quote\Desk\Block\Customer\Ticket\View\Message" name="customer_ticket_view_messages_form_fields" as="ticket.messages.form.fields" cacheable="false" template="customer/ticket/view/messages/form/fields.phtml"/>
+                    </block>
+                </block>
+                <block class="Cart2Quote\Desk\Block\Customer\Ticket\View" name="customer_ticket_view_details" as="ticket.details" cacheable="false" template="customer/ticket/view/details.phtml"/>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

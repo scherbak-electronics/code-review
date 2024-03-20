@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Pronko Consulting
+ * See LICENSE for license details.
+ */
+ -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Pronko_Elavon::css/styles.css"/>
+    </head>
+    <body>
+        <referenceContainer name="js">
+            <block class="Magento\Backend\Block\Template" name="pronko.elavon.config.js" template="Pronko_Elavon::system/config/js.phtml"/>
+            <block class="Pronko\Elavon\Block\Adminhtml\System\Config\Changelog" name="pronko.elavon.config.changelog" template="Pronko_Elavon::system/config/changelog.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

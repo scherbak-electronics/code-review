@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright (c) 2019. Cart2Quote B.V. All rights reserved.
+  ~ See COPYING.txt for license details.
+  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="desk_adminhtml_save_message_after">
+        <observer name="deskemail_adminhtml_send_message" instance="Cart2Quote\DeskEmail\Observer\Adminhtml\SaveMessageAfterObserver" />
+    </event>
+    <event name="desk_adminhtml_new_ticket">
+        <observer name="deskemail_adminhtml_new_ticket" instance="Cart2Quote\DeskEmail\Observer\Adminhtml\NewTicketObserver" />
+    </event>
+</config>

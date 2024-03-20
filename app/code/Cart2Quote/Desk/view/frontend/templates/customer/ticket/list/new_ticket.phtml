@@ -1,0 +1,21 @@
+<?php
+/**
+ * Copyright (c) 2019. Cart2Quote B.V. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var Cart2Quote\Desk\Block\Magento\Contact\Success $block */
+?>
+
+<div class="actions-toolbar">
+    <div class="primary">
+        <button type="button"
+                onclick="window.location.replace('<?php echo $block->getUrl('desk/customer/new') ?>')"
+                title="<?php /* @escapeNotVerified */ echo __("New Ticket") ?>"
+                class="action primary add customer-add-ticket">
+            <span>
+                <?php /* @escapeNotVerified */ echo __("New Ticket") ?>
+            </span>
+        </button>
+    </div>
+</div>

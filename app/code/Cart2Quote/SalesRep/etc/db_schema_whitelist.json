@@ -1,0 +1,44 @@
+{
+    "salesrep_type": {
+        "column": {
+            "type_id": true,
+            "deleted": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "salesrep_user": {
+        "column": {
+            "id": true,
+            "user_id": true,
+            "object_id": true,
+            "type_id": true,
+            "is_main": true,
+            "created": true,
+            "updated": true
+        },
+        "index": {
+            "SALESREP_USER_USER_ID_OBJECT_ID_TYPE_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "SALESREP_USER_USER_ID_ADMIN_USER_USER_ID": true,
+            "SALESREP_USER_TYPE_ID_SALESREP_TYPE_TYPE_ID": true,
+            "SALESREP_USER_USER_ID_OBJECT_ID_TYPE_ID": true
+        }
+    },
+    "salesrep_order": {
+        "column": {
+            "id": true,
+            "user_id": true,
+            "order": true,
+            "store_id": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "SALESREP_ORDER_STORE_ID_STORE_STORE_ID": true,
+            "SALESREP_ORDER_USER_ID_ADMIN_USER_USER_ID": true
+        }
+    }
+}

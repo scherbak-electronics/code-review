@@ -1,0 +1,94 @@
+<?php
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+?>
+
+<?php /**@var $block \MageWorx\DownloadsImportExport\Block\Adminhtml\Section\ImportExport */ ?>
+
+<div class="import-export-downloads-section">
+    <?php if (!$block->getIsReadonly()): ?>
+        <div class="import-downloads-sections">
+            <?php if ($block->getUseContainer()): ?>
+            <form id="import-form" class="admin__fieldset"
+                  action="<?= $block->getUrl('mageworx_downloads/section/importPost') ?>" method="post"
+                  enctype="multipart/form-data">
+                <?php endif; ?>
+                <?= $block->getBlockHtml('formkey') ?>
+                <div class="fieldset admin__field">
+                    <label for="import_sections_file" class="admin__field-label"><span><?= __(
+                                'Import Sections'
+                            ) ?></span></label>
+                    <div class="admin__field-control">
+                        <input type="file" id="import_sections_file" name="import_sections_file"
+                               class="input-file required-entry"/>
+                        <?= $block->getButtonHtml(__('Import Sections'), '', 'import-submit') ?>
+                    </div>
+                </div>
+                <?php if ($block->getUseContainer()): ?>
+            </form>
+        <?php endif; ?>
+            <script>
+                require(['jquery', 'Magento_Ui/js/modal/alert', 'mage/mage', 'loadingPopup', 'mage/translate'], function (jQuery, uiAlert) {
+
+                    jQuery('#import-form').mage('form').mage('validation');
+                    (function ($) {
+                        $('.import-submit').click(function () {
+                            if ($(':input[name="import_sections_file"]').val()) {
+                                $('body').loadingPopup({
+                                    timeout: false
+                                });
+
+                                $(this.form).submit();
+                            } else {
+                                uiAlert({
+                                    content: $.mage.__('Please select a file to import!')
+                                });
+                            }
+                        });
+                    })(jQuery);
+
+                });
+            </script>
+        </div>
+    <?php endif; ?>
+    <div class="export-downloads-section <?php if ($block->getIsReadonly()): ?>box-left<?php else: ?>box-right<?php endif; ?>">
+        <?php if ($block->getUseContainer()): ?>
+        <form id="export_form" class="admin__fieldset" action="<?= $block->escapeHtmlAttr($block->getUrl('mageworx_downloads/section/exportCsv')) ?>" method="post" enctype="multipart/form-data">
+            <?php endif; ?>
+            <?= $block->getBlockHtml('formkey') ?>
+            <div class="fieldset admin__field">
+                <span class="admin__field-label"><span><?= $block->escapeHtml(__('Export Sections')) ?></span></span>
+                <div class="admin__field-control">
+                    <?= $block->getButtonHtml(__('Export Sections'), "export_form.submit()") ?>
+                </div>
+            </div>
+            <?php if ($block->getUseContainer()): ?>
+        </form>
+    <?php endif; ?>
+    </div>
+</div>
+<div class="example-export">
+    <?php if ($block->getUseContainer()): ?>
+    <form id="example_export_form"
+          class="admin__fieldset"
+          action="<?php echo $block->getUrl('mageworx_downloads/section/exportExamplePost') ?>"
+          method="post"
+          enctype="multipart/form-data">
+        <?php endif; ?>
+        <?php echo $block->getBlockHtml('formkey') ?>
+        <div class="fieldset admin__field">
+                <span class="admin__field-label">
+                    <span><?php echo __('Download example CSV file'); ?></span>
+                </span>
+            <div class="admin__field-control" style="line-height: 32px;">
+                <a href="<?php echo $block->getUrl(
+                    'mageworx_downloads/section/exportExamplePost'
+                ) ?>"><?php echo __('Download'); ?></a>
+            </div>
+        </div>
+        <?php if ($block->getUseContainer()): ?>
+    </form>
+<?php endif; ?>
+</div>

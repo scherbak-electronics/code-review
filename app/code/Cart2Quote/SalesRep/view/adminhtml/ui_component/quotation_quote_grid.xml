@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2023. Cart2Quote B.V. All rights reserved.
+  ~ See COPYING.txt for license details.
+  -->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <columns name="quotation_quote_columns">
+        <column name="salesrep_user_id" component="Magento_Ui/js/grid/columns/select" sortOrder="10">
+            <settings>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <label translate="true">Sales Representative</label>
+                <options class="Cart2Quote\SalesRep\Model\AdminUser\Grid\Options"/>
+            </settings>
+        </column>
+    </columns>
+</listing>

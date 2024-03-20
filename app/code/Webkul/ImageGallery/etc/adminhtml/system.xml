@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_ImageGallery
+ * @author    Webkul
+ * @copyright Copyright (c) 2010-2016 Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="webkul" translate="label" sortOrder="10">
+            <label>Webkul</label>
+        </tab>
+        <section id="imagegallery" translate="label" type="text" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Image Gallery</label>
+            <tab>webkul</tab>
+            <resource>Webkul_ImageGallery::config_imagegallery</resource>
+            <group id="settings" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Gallery Settings</label>
+                <field id="opening_effect" translate="label comment" sortOrder="0" type="select" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Opening Effect</label>
+                    <source_model>Webkul\ImageGallery\Model\Config\Source\Effect</source_model>
+                </field>
+                <field id="closing_effect" translate="label comment" sortOrder="1" type="select" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Closing Effect</label>
+                    <source_model>Webkul\ImageGallery\Model\Config\Source\Effect</source_model>
+                </field>
+                <field id="caption" translate="label comment" sortOrder="2" type="select" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Caption</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="type" translate="label comment" sortOrder="3" type="select" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Caption Type</label>
+                    <source_model>Webkul\ImageGallery\Model\Config\Source\CaptionType</source_model>
+                    <depends>
+                        <field id="caption">1</field>
+                    </depends>
+                    <comment>'float' and 'over' works with position 'bottom'.</comment>
+                </field>
+                <field id="position" translate="label comment" sortOrder="5" type="select" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Caption Position</label>
+                    <source_model>Webkul\ImageGallery\Model\Config\Source\CaptionPosition</source_model>
+                    <depends>
+                        <field id="caption">1</field>
+                    </depends>
+                </field>
+                <field id="background" translate="label comment" sortOrder="7" type="select" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Background</label>
+                    <source_model>Webkul\ImageGallery\Model\Config\Source\Background</source_model>
+                </field>
+                <field id="thumbs" translate="label comment" sortOrder="9" type="select" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Thumbnail</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="controls">0</field>
+                    </depends>
+                </field>
+                <field id="thumb_type" translate="label comment" sortOrder="10" type="select" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Thumbnail Type</label>
+                    <source_model>Webkul\ImageGallery\Model\Config\Source\ThumbnailType</source_model>
+                    <depends>
+                        <field id="controls">0</field>
+                    </depends>
+                </field>
+                <field id="cyclic" translate="label comment" sortOrder="11" type="select" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Cyclic</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="autoplay" translate="label comment" sortOrder="13" type="select" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Autoplay</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="controls">0</field>
+                    </depends>
+                </field>
+                <field id="interval" translate="label comment" sortOrder="15" type="text" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Interval</label>
+                </field>
+                <field id="border" translate="label comment" sortOrder="19" type="select" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Border</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="slidecount" translate="label comment" sortOrder="21" type="select" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Slidecount</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="caption">1</field>
+                    </depends>
+                </field>
+                <field id="controls" translate="label comment" sortOrder="23" type="select" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Controls</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

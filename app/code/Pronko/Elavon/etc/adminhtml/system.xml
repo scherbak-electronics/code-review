@@ -1,0 +1,190 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Pronko Consulting
+ * See LICENSE for license details.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="payment">
+            <group id="elavon_section" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Elavon by Pronko Consulting</label>
+                <comment><![CDATA[Accept credit/debit cards in your Magento store via Elavon.]]></comment>
+                <attribute type="expanded">1</attribute>
+                <fieldset_css>complex elavon-section</fieldset_css>
+                <frontend_model>Magento\Config\Block\System\Config\Form\Fieldset</frontend_model>
+                <group id="elavon" translate="label" type="text" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[&nbsp;]]></label>
+                    <frontend_model>Pronko\Elavon\Block\Adminhtml\System\Config\Fieldset</frontend_model>
+                    <attribute type="activity_path">payment/elavon/active</attribute>
+                    <more_url>https://www.pronkoconsulting.com/docs/elavon-payment-magento-2</more_url>
+                    <field id="version" translate="label comment" type="note" sortOrder="7" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Module Version</label>
+                        <frontend_model>Pronko\Elavon\Block\Adminhtml\System\Config\Version</frontend_model>
+                    </field>
+                    <field id="active" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Enable this Solution</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <config_path>payment/elavon/active</config_path>
+                        <requires>
+                            <group id="elavon_required"/>
+                        </requires>
+                    </field>
+                    <field id="connection_type" translate="label comment" type="select" sortOrder="13" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Connection Type</label>
+                        <source_model>Pronko\Elavon\Source\ConnectionType</source_model>
+                        <config_path>payment/elavon/connection_type</config_path>
+                        <backend_model>Pronko\Elavon\Model\Config\ConnectionType</backend_model>
+                    </field>
+                    <field id="environment" translate="label comment" type="select" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Environment</label>
+                        <source_model>Pronko\Elavon\Source\Environment</source_model>
+                        <config_path>payment/elavon/environment</config_path>
+                    </field>
+                    <field id="debug" translate="label comment" type="select" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Debug</label>
+                        <comment><![CDATA[Gateway API messages are stored in the `debug_elavon.log` file.]]></comment>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <config_path>payment/elavon/debug</config_path>
+                    </field>
+                    <field id="title" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Title</label>
+                        <comment>Payment Method name at the Checkout page.</comment>
+                        <config_path>payment/elavon/title</config_path>
+                    </field>
+                    <field id="payment_action" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Payment Action</label>
+                        <source_model>Pronko\Elavon\Source\PaymentAction</source_model>
+                        <config_path>payment/elavon/payment_action</config_path>
+                    </field>
+                    <field id="cctypes" translate="label" type="multiselect" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Credit Card Types</label>
+                        <source_model>Pronko\Elavon\Source\CcTypeProvider</source_model>
+                        <config_path>payment/elavon/cctypes</config_path>
+                        <depends>
+                            <field id="connection_type">cc-form</field>
+                        </depends>
+                    </field>
+                    <field id="min_order_total" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Minimum Order Total</label>
+                    </field>
+                    <field id="max_order_total" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Maximum Order Total</label>
+                    </field>
+                    <field id="sort_order" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Sort Order</label>
+                        <frontend_class>validate-number</frontend_class>
+                        <config_path>payment/elavon/sort_order</config_path>
+                    </field>
+
+                    <group id="credentials" translate="label" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="600">
+                        <label>Elavon Credentials</label>
+                        <frontend_model>Magento\Config\Block\System\Config\Form\Fieldset</frontend_model>
+                        <field id="merchant_id" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Merchant ID</label>
+                            <config_path>payment/elavon/merchant_id</config_path>
+                        </field>
+                        <field id="account" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Account</label>
+                            <config_path>payment/elavon/account</config_path>
+                        </field>
+                        <field id="subaccount" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Default Sub Account</label>
+                            <config_path>payment/elavon/subaccount</config_path>
+                        </field>
+                        <field id="sub_accounts" translate="label" type="select" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Sub Accounts</label>
+                            <frontend_model>Pronko\Elavon\Block\Adminhtml\System\Config\SubAccount</frontend_model>
+                            <backend_model>Pronko\Elavon\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
+                            <config_path>payment/elavon/sub_accounts</config_path>
+                        </field>
+                        <field id="secret" translate="label" type="obscure" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Secret</label>
+                            <config_path>payment/elavon/secret</config_path>
+                            <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                        </field>
+                        <field id="refund_password" translate="label" type="obscure" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Refund Password</label>
+                            <config_path>payment/elavon/refund_password</config_path>
+                            <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                        </field>
+                    </group>
+
+                    <group id="fraud_management" translate="label comment" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="900">
+                        <comment><![CDATA[Fraud Filter enables merchants to automatically Pass, Hold or Block transactions based on the result of one or more rules.]]></comment>
+                        <label>Fraud Management</label>
+                        <frontend_model>Magento\Config\Block\System\Config\Form\Fieldset</frontend_model>
+                        <field id="is_fraud_enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Enable Fraud Management</label>
+                            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                            <config_path>payment/elavon/is_fraud_enabled</config_path>
+                        </field>
+
+                        <field id="fraud_filter_mode" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Fraud Filter Mode</label>
+                            <source_model>Pronko\Elavon\Source\FraudModeProvider</source_model>
+                            <config_path>payment/elavon/fraud_filter_mode</config_path>
+                            <depends>
+                                <field id="is_fraud_enabled">1</field>
+                            </depends>
+                        </field>
+                    </group>
+
+                    <group id="advanced_settings" translate="label" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="1000">
+                        <label>Advanced Settings</label>
+                        <frontend_model>Magento\Config\Block\System\Config\Form\Fieldset</frontend_model>
+                        <field id="can_capture_partial" translate="label" type="select" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Multiple Settle/Refund Enabled</label>
+                            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                            <config_path>payment/elavon/can_capture_partial</config_path>
+                            <backend_model>Pronko\Elavon\Model\Config\Partial</backend_model>
+                        </field>
+                        <field id="useccv" translate="label" type="select" sortOrder="88" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>CVV Verification</label>
+                            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                            <config_path>payment/elavon/useccv</config_path>
+                        </field>
+                        <field id="ss_issue_number" translate="label" type="select" sortOrder="88" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Switch/Solo Issue Number Enabled</label>
+                            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                            <config_path>payment/elavon/ss_issue_number</config_path>
+                        </field>
+                        <field id="order_status" translate="label" type="select" sortOrder="88" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>New Order Status</label>
+                            <source_model>Magento\Sales\Model\Config\Source\Order\Status</source_model>
+                            <config_path>payment/elavon/order_status</config_path>
+                        </field>
+                        <field id="allowspecific" translate="label" type="allowspecific" sortOrder="85" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Payment from Applicable Countries</label>
+                            <source_model>Magento\Payment\Model\Config\Source\Allspecificcountries</source_model>
+                            <config_path>payment/elavon/allowspecific</config_path>
+                        </field>
+                        <field id="specificcountry" translate="label" type="multiselect" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Payment from Specific Countries</label>
+                            <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
+                            <config_path>payment/elavon/specificcountry</config_path>
+                            <can_be_empty>1</can_be_empty>
+                            <depends>
+                                <field id="allowspecific">1</field>
+                            </depends>
+                        </field>
+                        <field id="allowed_currencies" translate="label" type="multiselect" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Accepted Currency</label>
+                            <source_model>Magento\Config\Model\Config\Source\Locale\Currency</source_model>
+                            <config_path>payment/elavon/allowed_currencies</config_path>
+                        </field>
+                        <field id="gateway_url" translate="label" type="text" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Production Gateway URL</label>
+                            <config_path>payment/elavon/gateway_url</config_path>
+                        </field>
+                        <field id="gateway_url_sandbox" translate="label" type="text" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Sandbox Gateway URL</label>
+                            <config_path>payment/elavon/gateway_url_sandbox</config_path>
+                        </field>
+                    </group>
+                </group>
+            </group>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,27 @@
+<?php
+/**
+ * Copyright (c) 2019. Cart2Quote B.V. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var Cart2Quote\Desk\Block\Customer\Ticket\View\Message $block */
+?>
+
+<div class="message <?php echo $block->getTicketDetailClass($block->getKey()) ?>">
+        <div class="title">
+            <span class="message-name">
+                <?php echo $block->escapeHtml($block->getMessage()->getName()) ?>
+            </span>
+            <div class="message-date">
+                <time class="date">
+                    <?php /* @escapeNotVerified */ echo $block->dateFormat($this->getMessage()->getUpdatedAt())?>
+                </time>
+                <time class="time">
+                    <?php /* @escapeNotVerified */ echo $block->timeFormat($this->getMessage()->getUpdatedAt())?>
+                </time>
+            </div>
+        </div>
+    <div class="message-content">
+        <?php echo nl2br($block->escapeHtml($block->getMessage()->getMessage())) ?>
+    </div>
+</div>

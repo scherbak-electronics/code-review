@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright (c) 2020. Cart2Quote B.V. All rights reserved.
+  ~ See COPYING.txt for license details.
+  -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Cart2Quote_Desk::desk_message_template" title="Ticket Message Template" translate="title" sortOrder="11" module="Cart2Quote_DeskMessageTemplate" parent="Cart2Quote_Desk::desk" action="desktemplate/message/index" resource="Cart2Quote_DeskMessageTemplate::ticket_template"/>
+    </menu>
+</config>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="additional.product.info">
+            <block class="MageWorx\Downloads\Block\Order\EmailAttachments"
+                   template="MageWorx_Downloads::email/order/attachments.phtml"
+                   as="mageworx_attachments"
+                   name="sales.order.mageworx.product.attachments"
+            />
+        </referenceBlock>
+    </body>
+</page>

@@ -1,0 +1,51 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$catId = 2; // Parent Category ID
+$subcategory = $objectManager->create('Magento\Catalog\Model\Category')->load($catId);
+$subcats = $subcategory->getChildrenCategories();
+$_helper = $this->helper('Magento\Catalog\Helper\Output');
+?>
+<div class="products wrapper grid products-grid">
+	<div class="desktop_3" id="category-products-grid">
+		<ol class="products list items product-items same-height">
+		<?php
+			foreach ($subcats as $subcat) {
+				$_category = $objectManager->create('Magento\Catalog\Model\Category')->load($subcat->getId());
+				$_outputhelper = $this->helper('Magento\Catalog\Helper\Output');
+				$subcaturl = $subcat->getUrl();
+				$subcatImg = basename($_category->getImage());
+				$subcatImgAdd1 = "/".$subcatImg."";
+				$_imgHtml = '';
+				if ($_imgUrl = $_category->getImageUrl()) {
+				$_imgHtml = '<img src="' . $_imgUrl . '" style="height:104px;" />';
+				$_imgHtml = $_outputhelper->categoryAttribute($_category, $_imgHtml, 'image');
+				/* @escapeNotVerified */
+				 $image = $this->helper('Zenon\CustomerAttribute\Helper\Image');
+				$urlImages = $image->resize($subcatImgAdd1, 795, 300);
+				} ?>
+			<li class="item product product-item">				
+				<div class="product-item-info" data-container="product-grid">                	
+					<div class="cdz-section">
+						<div class="cdz-product-top">
+							<a href="<?php echo $subcaturl ?>" class="product photo product-item-photo" tabindex="-1">
+								<span class="main-image">
+									<?php if($_imgHtml !=""){?>
+										<img src="<?php echo $urlImages; ?>" style="height:104px;" />
+									<?php }else {?>
+											<img src="http://lumenstarled.com/pub/static/frontend/Codazon/fastest_bigmarket/en_US/Magento_Catalog/images/product/placeholder/image.jpg" style="height:104px;">
+									<?php }?>
+								</span>
+							</a>
+						</div>
+					</div>
+					<div class="product details product-item-details" style="height: 72px;">
+						<strong class="product name product-item-name">
+						<a class="product-item-link" href="<?php echo $subcaturl ?>"><?php echo $subcat->getName(); ?></a>
+						</strong>		
+					</div>
+				</div>
+			</li>
+			<?php } ?>
+		</ol>
+	</div>
+</div>

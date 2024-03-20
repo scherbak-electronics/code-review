@@ -1,0 +1,182 @@
+"Edit Attachment '%1'","Edit Attachment '%1'"
+"New Attachment","New Attachment"
+Section,Section
+Name,Name
+Description,Description
+"Downloads Limit","Downloads Limit"
+"See the changed tab on the tab list","See the changed tab on the tab list"
+File(s),File(s)
+File,File
+URL,URL
+"Customer Groups","Customer Groups"
+"Store View","Store View"
+"Is Active","Is Active"
+"Add file in ""New Order"" email","Add file in ""New Order"" email"
+"Attachment Settings","Attachment Settings"
+"The maximum file size limit is %1M.","The maximum file size limit is %1M."
+"We can't provide the upload settings right now.","We can't provide the upload settings right now."
+"Product IDs","Product IDs"
+"To enter a new product ID, either start a new line or separate it from the previous one with a coma.","To enter a new product ID, either start a new line or separate it from the previous one with a coma."
+"Product SKUs","Product SKUs"
+"To enter a new product SKU, either start a new line or separate it from the previous one with a coma.","To enter a new product SKU, either start a new line or separate it from the previous one with a coma."
+ID,ID
+Type,Type
+"Attribute Set","Attribute Set"
+Status,Status
+Visibility,Visibility
+SKU,SKU
+Price,Price
+Products,Products
+"Store View Specific Data","Store View Specific Data"
+"Attachment Information","Attachment Information"
+Attachments,Attachments
+"Save Section","Save Section"
+"Delete Section","Delete Section"
+"Edit Section '%1'","Edit Section '%1'"
+"New Section","New Section"
+"Section Settings","Section Settings"
+"Section Information","Section Information"
+"File Name","File Name"
+Enable,Enable
+Title,Title
+B,B
+KB,KB
+MB,MB
+"The attachment type is invalid. Verify and try again.","The attachment type is invalid. Verify and try again."
+"Something went wrong while saving the attachment %1.","Something went wrong while saving the attachment %1."
+"Only %1 attachment(s) out of %2 have been saved.","Only %1 attachment(s) out of %2 have been saved."
+"At least one file must be attached.","At least one file must be attached."
+"The attachment has been saved.","The attachment has been saved."
+"%1 attachments have been saved.","%1 attachments have been saved."
+"The attachment %1 has been deleted.","The attachment %1 has been deleted."
+"We can't find an attachment to delete.","We can't find an attachment to delete."
+Attachment,Attachment
+"Attachment ""%1""","Attachment ""%1"""
+"The section no longer exists.","The section no longer exists."
+"Something went wrong while loading the section page.","Something went wrong while loading the section page."
+"MageWorx Downloads: Attachments","MageWorx Downloads: Attachments"
+"Please correct the sent data.","Please correct the sent data."
+"Something went wrong while saving the page.","Something went wrong while saving the page."
+"Mass action successful on %1 records","Mass action successful on %1 records"
+"Mass action failed","Mass action failed"
+"A total of %1 record(s) have been deleted.","A total of %1 record(s) have been deleted."
+"An error occurred while deleting record(s).","An error occurred while deleting record(s)."
+"A total of %1 attachments have been disabled.","A total of %1 attachments have been disabled."
+"An error occurred while disabling attachments.","An error occurred while disabling attachments."
+"A total of %1 attachments have been enabled.","A total of %1 attachments have been enabled."
+"An error occurred while enabling attachments.","An error occurred while enabling attachments."
+"This product no longer exists.","This product no longer exists."
+"The section %1 has been deleted.","The section %1 has been deleted."
+"We can't find a section to delete.","We can't find a section to delete."
+"Section ""%1""","Section ""%1"""
+"MageWorx Downloads: Sections","MageWorx Downloads: Sections"
+"A total of %1 sections have been disabled.","A total of %1 sections have been disabled."
+"An error occurred while disabling sections.","An error occurred while disabling sections."
+"A total of %1 sections have been enabled.","A total of %1 sections have been enabled."
+"An error occurred while enabling sections.","An error occurred while enabling sections."
+"The section has been saved.","The section has been saved."
+"Something went wrong while saving the section.","Something went wrong while saving the section."
+"We can't find the link or file you requested.","We can't find the link or file you requested."
+"Something went wrong while getting the requested content.","Something went wrong while getting the requested content."
+"The link is not available.","The link is not available."
+"You have to %login% or %register% to download this file","You have to %login% or %register% to download this file"
+Login,Login
+Register,Register
+"File Downloads","File Downloads"
+"Downloads limit must be a positive integer.","Downloads limit must be a positive integer."
+"Downloads must be a positive integer.","Downloads must be a positive integer."
+"Link URL must have valid format.","Link URL must have valid format."
+"Provided file content must be valid base64 encoded data.","Provided file content must be valid base64 encoded data."
+"Attachment file not found. Please try again.","Attachment file not found. Please try again."
+"Product Grid","Product Grid"
+Auto,Auto
+Kilobytes,Kilobytes
+Megabytes,Megabytes
+Yes,Yes
+No,No
+Alphabetical,Alphabetical
+"Upload Date","Upload Date"
+Size,Size
+Downloads,Downloads
+"Attachment with specified ID ""%1"" not found.","Attachment with specified ID ""%1"" not found."
+"No attachment with the provided ID was found. Verify the ID and try again.","No attachment with the provided ID was found. Verify the ID and try again."
+"The link information is invalid. Verify the link and try again.","The link information is invalid. Verify the link and try again."
+"The attachment with ""%1"" ID can't be deleted.","The attachment with ""%1"" ID can't be deleted."
+"Provided content must be valid base64 encoded data.","Provided content must be valid base64 encoded data."
+"Provided file name contains forbidden characters.","Provided file name contains forbidden characters."
+"The same section name already exists. Please, rename the section and try again.","The same section name already exists. Please, rename the section and try again."
+"You can't delete section ID#""%1"".","You can't delete section ID#""%1""."
+"Could not save the section: %1","Could not save the section: %1"
+Edit,Edit
+Delete,Delete
+"Delete ""${ $.$data.name }""","Delete ""${ $.$data.name }"""
+"Are you sure you want to delete the Attachment ""${ $.$data.name }"" ?","Are you sure you want to delete the Attachment ""${ $.$data.name }"" ?"
+"Are you sure you want to delete the Section ""${ $.$data.name }"" ?","Are you sure you want to delete the Section ""${ $.$data.name }"" ?"
+"Product Attachments","Product Attachments"
+"Related attachments are shown to customers in ""Attachments"" tab on the product page.","Related attachments are shown to customers in ""Attachments"" tab on the product page."
+"Add Attachments","Add Attachments"
+Cancel,Cancel
+"Add Selected Attachments","Add Selected Attachments"
+Remove,Remove
+Filename,Filename
+"Date Modified","Date Modified"
+Download,Download
+Actions,Actions
+Unknown,Unknown
+"Here you can attach new files to this product.","Here you can attach new files to this product."
+"Add New Attachments","Add New Attachments"
+"New Attachments","New Attachments"
+Done,Done
+"Assign By","Assign By"
+"File / URL Switcher","File / URL Switcher"
+"Browse Files...","Browse Files..."
+"Browse to find or drag files here","Browse to find or drag files here"
+"Total upload progress","Total upload progress"
+"We could not detect a size.","We could not detect a size."
+"This file is too big. Maximum allowed size is","This file is too big. Maximum allowed size is"
+"We don't recognize or support this file extension type.","We don't recognize or support this file extension type."
+"File Downloads & Product Attachments","File Downloads & Product Attachments"
+"Main Settings","Main Settings"
+"Display File Size","Display File Size"
+"This setting shows/hides the file size that appears next to the downloadable file on the front-end.","This setting shows/hides the file size that appears next to the downloadable file on the front-end."
+"File Size Precision","File Size Precision"
+"This setting displays the file size in 1 of 3 values: Kilobytes, Megabytes or Auto. We generally recommend users to set it to Auto.","This setting displays the file size in 1 of 3 values: Kilobytes, Megabytes or Auto. We generally recommend users to set it to Auto."
+"Group By Section","Group By Section"
+"This setting groups the files by the sections and displays the section name on the front-end.","This setting groups the files by the sections and displays the section name on the front-end."
+"Sort Order","Sort Order"
+"This setting arranges the files in the selected order: Alphabetical, Upload Date, Size, Number of Downloads.","This setting arranges the files in the selected order: Alphabetical, Upload Date, Size, Number of Downloads."
+"Hide files","Hide files"
+"If set to Yes, then the user won't see the attachments that are set up to be shown for some other customer group. If this setting is set to No, then customers will see the files as a plain text but won’t be able to download them unless their customer group is in the allowed groups.","If set to Yes, then the user won't see the attachments that are set up to be shown for some other customer group. If this setting is set to No, then customers will see the files as a plain text but won’t be able to download them unless their customer group is in the allowed groups."
+"'How to download' message","'How to download' message"
+"This message is shown near the files that cannot be downloaded due to the restrictions by the customer groups on the front-end. You can use this message to persuade the users to Log in or Register. The available variables: <b>%login%</b> or <b>%register%</b>.","This message is shown near the files that cannot be downloaded due to the restrictions by the customer groups on the front-end. You can use this message to persuade the users to Log in or Register. The available variables: <b>%login%</b> or <b>%register%</b>."
+"Display the # of Downloads","Display the # of Downloads"
+"This setting shows your visitors how many times the file was downloaded. This number is updated when the page cache is refreshed.","This setting shows your visitors how many times the file was downloaded. This number is updated when the page cache is refreshed."
+"Add files in 'New Order' emails","Add files in 'New Order' emails"
+"Product Downloads Tab Title","Product Downloads Tab Title"
+"This setting specifies the title of the tab with downloadable files on the product page, added by the module.","This setting specifies the title of the tab with downloadable files on the product page, added by the module."
+"Product Downloads Block Title","Product Downloads Block Title"
+"This setting specifies the title of the section with downloadable files on the product page, added by the module. This setting is used if your theme doesn't have the product tabs or display the tabs as the separate sections (like in Magento Commerce layout).","This setting specifies the title of the section with downloadable files on the product page, added by the module. This setting is used if your theme doesn't have the product tabs or display the tabs as the separate sections (like in Magento Commerce layout)."
+"Maximum File Size Allowed","Maximum File Size Allowed"
+"This setting allows you to limit the size of the uploaded files. If empty or greater than server limitation, server limitation will be applied.</br>
+                                php.ini memory size format can be used (for example, ""100k"", ""1m"", etc).","This setting allows you to limit the size of the uploaded files. If empty or greater than server limitation, server limitation will be applied.</br>
+                                php.ini memory size format can be used (for example, ""100k"", ""1m"", etc)."
+"File Downloads Title","File Downloads Title"
+"This setting specifies the default title for the static block and widget with the downloadable files if it is not specified in the code snippet. See more details <a target=""_blank"" href=""https://support.mageworx.com/manuals/download/#product-attachments-on-cms-page"">here</a>","This setting specifies the default title for the static block and widget with the downloadable files if it is not specified in the code snippet. See more details <a target=""_blank"" href=""https://support.mageworx.com/manuals/download/#product-attachments-on-cms-page"">here</a>"
+"Assign Type","Assign Type"
+"All Attachments","All Attachments"
+"Specific Attachments","Specific Attachments"
+"Specify Attachments","Specify Attachments"
+Template,Template
+"Attachments Default Template","Attachments Default Template"
+"All Sections","All Sections"
+"Specific Sections","Specific Sections"
+"Specify Sections","Specify Sections"
+"Attachment Sections Default Template","Attachment Sections Default Template"
+"Add New Attachment","Add New Attachment"
+"Delete items","Delete items"
+"Are you sure you want to delete selected items?","Are you sure you want to delete selected items?"
+Disable,Disable
+"File Type","File Type"
+StatusText,StatusText
+EnableText,EnableText
+"Add New Section","Add New Section"

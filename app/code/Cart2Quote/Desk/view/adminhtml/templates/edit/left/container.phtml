@@ -1,0 +1,15 @@
+<?php
+/**
+ * Copyright (c) 2019. Cart2Quote B.V. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var Magento\Backend\Block\Template $block */
+?>
+
+<div class="admin__page-nav">
+    <div class="admin__page-nav-title">
+        <strong tabindex="1"><?php echo __("Ticket Details") ?></strong>
+    </div>
+    <?php echo $block->getChildHtml('ticket.edit.left.container.form') ?>
+</div>

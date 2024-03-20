@@ -1,0 +1,37 @@
+<?php
+/**
+ * Copyright (c) 2023. Cart2Quote B.V. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<?php /** @var $block \Cart2Quote\SalesRep\Block\Adminhtml\Container */ ?>
+<tr>
+    <td class="salesrep-title-td" colspan="2">
+        <div class="admin__page-section-item-title salesrep-title">
+            <span class="title"><?php echo __('Sales Representative') ?></span>
+            <div class="actions"></div>
+        </div>
+    </td>
+</tr>
+<tr data-mage-init='{
+    "salesrepAssign":
+    {
+        "url": "<?php echo $block->getUsersUrl() ?>",
+        "id": "<?php echo $block->getId() ?>",
+        "typeId": "<?php echo $block->getTypeId() ?>",
+        "customerId": "<?php echo $block->getCustomerId() ?>"
+    }
+}'>
+    <th class="salesrep-field-header"><?php echo __('Name') ?></th>
+    <td><span class="salesrep-user-container"><?php echo $block->getSalesRepHtml(); ?></span>
+        <span class="salesrep-user-list" style="display:none;">
+            <?php echo $block->getChildHtml('salesrep_users') ?>
+        </span>
+        <span class="salesrep-assign-save salesrep-action">
+            <a href="#" style="display:none;"><?php echo __('Save') ?></a>
+        </span>
+        <span class="salesrep-assign-cancel salesrep-action">
+            <a href="#" style="display:none;"><?php echo __('Cancel') ?></a>
+        </span>
+    </td>
+</tr>

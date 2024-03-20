@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Pronko Consulting
+ * See LICENSE for license details.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Pronko\Elavon\Block\Info">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item xsi:type="string" name="is_secure_mode">0</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Sales\Model\Service\CreditmemoService">
+        <plugin name="elavonCreditmemoValidator" type="Pronko\Elavon\Plugin\Adminhtml\Sales\CreditmemoPlugin" />
+    </type>
+
+    <type name="Magento\Sales\Block\Adminhtml\Transactions\Detail\Grid">
+        <plugin name="elavonTransactionAdditionalInfo" type="Pronko\Elavon\Plugin\Adminhtml\Sales\TransactionPlugin" />
+    </type>
+</config>

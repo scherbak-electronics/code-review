@@ -1,0 +1,26 @@
+<?php
+/**
+ * Copyright (c) 2023. Cart2Quote B.V. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<?php /** @var Cart2Quote\SalesRep\Block\Adminhtml\SalesRep\Users $block */ ?>
+<div class="admin__field-control">
+    <span id="salesrep-user-list">
+        <select class=" select admin__control-select" id="salesrep-dropdown" name="salesrep">
+            <option value=""> </option>
+            <option value="0">-- <?php echo __('Remove Sales Representative') ?> --</option>
+            <?php
+            foreach ($block->getUserList() as $user) : ?>
+                <option value="<?php echo $user['value']; ?>">
+                    <?php echo $user['label']; ?>
+                </option>
+                <?php
+            endforeach; ?>
+        </select>
+    </span>
+    <span id="salesrep-user-check" class="salesrep-user-check">
+            <input type="checkbox" name="stickSalesrep" id="stick-salesrep">
+            <label for="salesrep-user-check"><?php echo __('Assign as default Salesrep'); ?></label>
+    </span>
+</div>

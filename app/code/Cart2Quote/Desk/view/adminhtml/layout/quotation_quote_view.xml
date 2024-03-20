@@ -1,0 +1,33 @@
+<?xml version="1.0"?><!--
+  ~ Copyright (c) 2019. Cart2Quote B.V. All rights reserved.
+  ~ See COPYING.txt for license details.
+  -->
+
+<!--
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Cart2Quote_Desk::css/edit.css"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Cart2Quote\Desk\Block\Adminhtml\Quote\View\Tab\Save" name="desk_tab_save" ifconfig="desk_general/default_settings/quote_back_page_visibility"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+            <referenceBlock name="quotation_quote_tabs">
+                    <block class="Cart2Quote\Desk\Block\Adminhtml\Quote\View\Tab\ViewTicket" name="desk_tab_view" template="quote/view/tab/tickets.phtml" ifconfig="desk_general/default_settings/quote_back_page_visibility">
+                        <block class="Cart2Quote\Desk\Block\Adminhtml\Quote\View\Tab\Container\Status" name="page.title.ticket.status" template="Cart2Quote_Desk::edit/container/status.phtml"/>
+                        <block class="Cart2Quote\Desk\Block\Adminhtml\Quote\View\Tab\Container\Create" template="Cart2Quote_Desk::quote/view/tab/create.phtml" name="quote.ticket.edit.container.create"/>
+                        <block class="Cart2Quote\Desk\Block\Adminhtml\Quote\View\Tab\Container\Messages" cacheable="false" template="Cart2Quote_Desk::quote/view/tab/messages.phtml" name="quote.ticket.edit.container.messages">
+                            <block class="Cart2Quote\Desk\Block\Adminhtml\Edit\Container\Messages\Message" cacheable="false" template="Cart2Quote_Desk::edit/container/messages/message.phtml" name="quote.ticket.edit.container.messages.message"/>
+                        </block>
+                    </block>
+                <action method="addTabAfter" ifconfig="desk_general/default_settings/quote_back_page_visibility" >
+                    <argument name="name" xsi:type="string">desk_tab</argument>
+                    <argument name="block" xsi:type="string">desk_tab_view</argument>
+                    <argument name="after" xsi:type="string">quote_info</argument>
+                </action>
+            </referenceBlock>
+        </referenceContainer>
+    </body>
+</page>

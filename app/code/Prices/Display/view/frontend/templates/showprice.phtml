@@ -1,0 +1,63 @@
+<?php 
+
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$product = $objectManager->get('Magento\Framework\Registry')->registry('current_product');
+$price = $product->getPrice();
+$priceHelper = $objectManager->create('Magento\Framework\Pricing\Helper\Data'); // Instance of Pricing Helper
+$formattedPrice = $priceHelper->currency($price, true, false);
+
+?>
+
+<style type="text/css">
+	.product-info-main .detialPagePrice {
+    border-bottom: 0px #c1c1c1 solid;
+    display: table;
+    width: 100%;
+    color: #575757;
+    margin-bottom: 0;
+    margin-top: -13px;
+}
+.product-info-main .detialPagePrice .detailPageFinalPrice {
+    padding: 0 !important;
+}
+.product-info-main .detialPagePrice .detailPageFinalPrice span.price {
+    font-size: 18px;
+}
+</style>
+
+<?php
+
+ if ($price != 0) { 
+$customerSession = $objectManager->get(\Magento\Customer\Model\Session::class); 
+
+if ($customerSession->isLoggedIn()) {
+
+            $customerId = $customerSession->getCustomerId();
+            $customer = $objectManager->create(\Magento\Customer\Api\CustomerRepositoryInterface::class)->getById($customerId);
+            $customAttribute = $customer->getCustomAttribute('show_price');
+            
+            if($customAttribute != NULL){
+                $hidePriceValue = $customAttribute->getValue();
+            }else{
+                $hidePriceValue = 0;
+            }
+            // echo $hidePriceValue; die('test');
+           if ($hidePriceValue != 0) {
+            ?>
+
+
+
+<div class="detialPagePrice"><div class="detailPageFinalPrice" data-role="priceBox" data-product-id="6" data-price-box="product-id-6">
+<span class="price-container price-final_price tax weee" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+<span id="product-price-6" data-price-amount="<?php echo $price; ?>" data-price-type="finalPrice" class="price-wrapper "><span class="price"><?php echo $formattedPrice; ?></span></span>
+<meta itemprop="price" content="<?php echo $formattedPrice; ?>">
+<meta itemprop="priceCurrency" content="CAD">
+</span>
+</div>
+</div>
+
+<?php 
+} 
+} ?>
+
+<?php } ?>

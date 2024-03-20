@@ -1,0 +1,10 @@
+/*
+ * Copyright (c) 2021. Cart2Quote B.V. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+span.c2q_n2o_price {
+    font-size: 36px;
+    line-height: 36px;
+    font-weight: 600;
+}

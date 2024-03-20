@@ -1,0 +1,25 @@
+<?php
+/**
+ * Copyright (c) 2019. Cart2Quote B.V. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var Cart2Quote\Desk\Block\Adminhtml\Quote\View\Tab\ViewTicket $block */
+?>
+<form id="ticket_form" data-mage-init='{"validation":{}}'>
+    <div class="desk-ticket-edit">
+        <?php echo $block->getChildHtml('page.title.ticket.status') ?>
+    </div>
+    <div id="message-thread">
+        <?php echo $block->getChildHtml('quote.ticket.edit.container.create') ?>
+        <?php echo $block->getChildHtml('quote.ticket.edit.container.messages', false) ?>
+    </div>
+</form>
+
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Cart2Quote_Desk/js/hideButtons": {}
+    }
+}
+</script>

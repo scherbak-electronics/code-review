@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Pronko Consulting
+ * See LICENSE for license details.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <payment>
+            <elavon>
+                <active>1</active>
+                <debug>1</debug>
+                <title>Credit or Debit Card</title>
+                <order_status>processing</order_status>
+                <payment_action>authorize_capture</payment_action>
+                <ccfields>x_card_code,x_exp_date,x_card_num</ccfields>
+                <secret backend_model="Magento\Config\Model\Config\Backend\Encrypted" />
+                <refund_password backend_model="Magento\Config\Model\Config\Backend\Encrypted" />
+                <model>Pronko\Elavon\Model\Method\Adapter</model>
+
+                <is_gateway>1</is_gateway>
+                <can_order>1</can_order>
+                <can_use_checkout>1</can_use_checkout>
+                <can_use_internal>1</can_use_internal>
+                <can_capture>1</can_capture>
+                <can_authorize>1</can_authorize>
+                <can_refund>1</can_refund>
+                <can_void>1</can_void>
+                <can_refund_partial_per_invoice>1</can_refund_partial_per_invoice>
+                <can_capture_partial>1</can_capture_partial>
+
+                <privateInfoKeys>batchid,authcode,bank,country,countrycode,region,last_transaction_id,message,pasref</privateInfoKeys>
+                <paymentInfoKeys>cc_type,card_number,card_expiry_date,bank,country,country_code,region,last_transaction_id,message,batchid,authcode,pasref</paymentInfoKeys>
+                <debugReplaceKeys>number,account</debugReplaceKeys>
+                <allowed_currencies>USD,EUR</allowed_currencies>
+                <cctypes>AE,VI,MC,MI,DN</cctypes>
+                <useccv>1</useccv>
+
+                <connection_type>cc-form</connection_type>
+                <gateway_url><![CDATA[https://api.elavonpaymentgateway.com/remote]]></gateway_url>
+                <gateway_url_sandbox><![CDATA[https://api.sandbox.elavonpaymentgateway.com/remote]]></gateway_url_sandbox>
+                <redirect_url><![CDATA[https://hpp.elavonpaymentgateway.com/pay]]></redirect_url>
+                <redirect_url_sandbox><![CDATA[https://hpp.sandbox.elavonpaymentgateway.com/pay]]></redirect_url_sandbox>
+
+                <redirect_response_url>elavon/redirect/response</redirect_response_url>
+                <card_payment_button_label>Place Order</card_payment_button_label>
+            </elavon>
+        </payment>
+    </default>
+</config>

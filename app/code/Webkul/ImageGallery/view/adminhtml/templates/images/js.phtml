@@ -1,0 +1,40 @@
+<?php
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_ImageGallery
+ * @author    Webkul
+ * @copyright Copyright (c) 2010-2016 Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+?>
+<script>
+    require([
+        'jquery',
+        "Magento_Ui/js/modal/alert"
+    ], function(jQuery, alert) {
+        jQuery(document).ready(function() {
+            var allowedExtensions = ['gif','png','jpg','jpeg'];
+            if (jQuery(".delete-image").length) {
+                jQuery(".delete-image").remove();
+            } else {
+                jQuery("#images_image").addClass("required-entry");
+            }
+            jQuery("#images_image").on("change", function(){
+                var fileName = jQuery(this).val();
+                var ext = fileName.split('.').pop().toLowerCase();
+                if(jQuery.inArray(ext, allowedExtensions) == -1) {
+                    alert({
+                        title: 'Warning',
+                        content: "<?php echo __('Image type not allowed'); ?>",
+                        actions: {
+                            always: function (){}
+                        }
+                    });
+                    jQuery(this).val('');
+                }
+            });
+        });
+    });
+</script>

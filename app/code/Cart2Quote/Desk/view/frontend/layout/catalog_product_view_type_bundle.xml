@@ -1,0 +1,15 @@
+<?xml version="1.0"?><!--
+  ~ Copyright (c) 2020. Cart2Quote B.V. All rights reserved.
+  ~ See COPYING.txt for license details.
+  -->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Cart2Quote_Desk::css/bundle.css"/>
+    </head>
+    <body>
+        <referenceContainer name="product.info.main">
+            <block class="Cart2Quote\Desk\Block\Product\View\Enquire" name="product.enquire" as="enquire" ifconfig="desk_general/default_settings/enquire" template="Cart2Quote_Desk::product/view/enquiry/button.phtml" before="customize.button"/>
+        </referenceContainer>
+    </body>
+</page>

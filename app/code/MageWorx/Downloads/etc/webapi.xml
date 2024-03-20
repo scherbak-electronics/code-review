@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <!-- Attachment CRUD -->
+    <route url="/V1/mw-downloads-attachments/:attachmentId" method="GET">
+        <service class="MageWorx\Downloads\Api\AttachmentRepositoryInterface" method="getById"/>
+        <resources>
+            <resource ref="MageWorx_Downloads::downloads"/>
+        </resources>
+    </route>
+    <route url="/V1/mw-downloads-attachments" method="POST">
+        <service class="MageWorx\Downloads\Api\AttachmentRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="MageWorx_Downloads::downloads"/>
+        </resources>
+    </route>
+    <route url="/V1/mw-downloads-attachments/:id" method="PUT">
+        <service class="MageWorx\Downloads\Api\AttachmentRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="MageWorx_Downloads::downloads"/>
+        </resources>
+    </route>
+    <route url="/V1/mw-downloads-attachments/:id" method="DELETE">
+        <service class="MageWorx\Downloads\Api\AttachmentRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="MageWorx_Downloads::downloads"/>
+        </resources>
+    </route>
+    <route url="/V1/mw-downloads-attachments/search" method="GET">
+        <service class="MageWorx\Downloads\Api\AttachmentRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="MageWorx_Downloads::downloads"/>
+        </resources>
+    </route>
+    <!-- /Attachment CRUD -->
+
+    <route url="/V1/mw-downloads-attachments/mine/product/:product_id" method="GET">
+        <service class="MageWorx\Downloads\Api\AttachmentManagerInterface" method="getByProductId"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+        <data>
+            <parameter name="customerId" force="true">%customer_id%</parameter>
+        </data>
+    </route>
+
+    <route url="/V1/mw-downloads-attachments/guest/product/:product_id" method="GET">
+        <service class="MageWorx\Downloads\Api\GuestAttachmentManagerInterface" method="getByProductId"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <!-- /Get Product's Attachments For Customer -->
+
+    <!-- Section CRUD -->
+    <route url="/V1/mw-downloads-sections" method="POST">
+        <service class="MageWorx\Downloads\Api\SectionRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="MageWorx_Downloads::downloads"/>
+        </resources>
+    </route>
+    <route url="/V1/mw-downloads-sections/:sectionId" method="GET">
+        <service class="MageWorx\Downloads\Api\SectionRepositoryInterface" method="get"/>
+        <resources>
+            <resource ref="MageWorx_Downloads::downloads"/>
+        </resources>
+    </route>
+    <route url="/V1/mw-downloads-sections" method="PUT">
+        <service class="MageWorx\Downloads\Api\SectionRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="MageWorx_Downloads::downloads"/>
+        </resources>
+    </route>
+    <route url="/V1/mw-downloads-sections/:sectionId" method="DELETE">
+        <service class="MageWorx\Downloads\Api\SectionRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="MageWorx_Downloads::downloads"/>
+        </resources>
+    </route>
+    <route url="/V1/mw-downloads-sections/search" method="GET">
+        <service class="MageWorx\Downloads\Api\SectionRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="MageWorx_Downloads::downloads"/>
+        </resources>
+    </route>
+    <!-- /Section CRUD -->
+</routes>

@@ -1,0 +1,97 @@
+<?xml version="1.0"?><!--
+  ~ Copyright (c) 2023. Cart2Quote B.V. All rights reserved.
+  ~ See COPYING.txt for license details.
+  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="quotation_email">
+            <group id="global" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Set Sales Representative as Sender</label>
+                <field id="set_salesrep_as_sender" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Set Assigned Sales Rep as Sender</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Sets the "From" field to the Quote's assigned SalesRep</comment>
+                </field>
+            </group>
+            <group id="quote_request" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="copy_to_salesrep" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Send Quote Request Email Copy to Assigned Sales Representative</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Adds the Sales Representative that is assigned to the quotation to the BCC list</comment>
+                </field>
+            </group>
+            <group id="quote_proposal" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="copy_to_salesrep" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Send Quote Proposal Email Copy to Assigned Sales Representative</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Adds the Sales Representative that is assigned to the quotation to the BCC list</comment>
+                </field>
+            </group>
+            <group id="quote_proposal_accepted" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="copy_to_salesrep" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Send Proposal Accepted Email Copy to Assigned Sales Representative</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Adds the Sales Representative that is assigned to the quotation to the BCC list</comment>
+                </field>
+            </group>
+            <group id="quote_proposal_expire" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="copy_to_salesrep" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Send Proposal Expired Email Copy to Assigned Sales Representative</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Adds the Sales Representative that is assigned to the quotation to the BCC list</comment>
+                </field>
+            </group>
+            <group id="quote_reminder" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="copy_to_salesrep" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Send Quote Reminder Email Copy to Assigned Sales Representative</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Adds the Sales Representative that is assigned to the quotation to the BCC list</comment>
+                </field>
+            </group>
+            <group id="quote_proposal_rejected" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="copy_to_salesrep" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Send Proposal Rejected Email Copy to Assigned Sales Representative</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Adds the Sales Representative that is assigned to the quotation to the BCC list</comment>
+                </field>
+            </group>
+        </section>
+        <section id="cart2quote_salesrep" translate="label" sortOrder="800" showInDefault="1" showInWebsite="1" showInStore="1" type="text">
+            <class>separator-top</class>
+            <label>SalesRep</label>
+            <tab>cart2quote</tab>
+            <resource>Cart2Quote_SalesRep::salesrep_settings</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="limit_view" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Limit Quote View</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Limit quotation grid quotes to assigned sales reps.</comment>
+                </field>
+                <field id="admin_user_roles" translate="label" type="multiselect" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Exception user roles</label>
+                    <source_model>Cart2Quote\SalesRep\Model\Config\Source\UserRoles</source_model>
+                    <can_be_empty>1</can_be_empty>
+                    <comment>Choose which admin user roles can see all quotations.</comment>
+                    <depends>
+                        <field id="limit_view">1</field>
+                    </depends>
+                </field>
+                <field id="enable_auto_assign" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable auto assign</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable automatically assignment of quotes to sales representatives</comment>
+                </field>
+                <field id="auto_assign" translate="label" type="multiselect" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Automatically assign sales representatives</label>
+                    <source_model>Cart2Quote\SalesRep\Model\Config\Backend\Admin\AdminUsers</source_model>
+                    <can_be_empty>1</can_be_empty>
+                    <comment>Choose which sales representative can be automatically assigned.</comment>
+                    <depends>
+                        <field id="enable_auto_assign">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

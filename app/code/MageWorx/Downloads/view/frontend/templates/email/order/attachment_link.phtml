@@ -1,0 +1,45 @@
+<?php
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+?>
+<?php
+/** @var \MageWorx\Downloads\Block\Catalog\Product\Link $block */
+
+$item    = $block->getItem();
+$itemUrl = $block->getAttachmentLink($item->getId());
+?>
+<div class="downloads-item">
+    <dt>
+        <span class="item-icon"><?= /* @noEscape */ $block->getIconImgTag($item) ?></span>
+        <span class="item-link">
+            <?php if ($item->getIsInGroup()): ?>
+                <a href="<?= $block->escapeUrl($itemUrl) ?>"
+                   rel="<?= $block->escapeHtmlAttr($item->getId()) ?>"
+                   target="_blank"
+                   title="<?= $block->escapeHtmlAttr($item->getName()) ?>">
+                    <b><?= $block->escapeHtml($item->getName()) ?></b>
+                </a>
+            <?php else: ?>
+                <b><?= $block->escapeHtml($item->getName()) ?></b>
+            <?php endif; ?>
+        </span>
+        <span class="item-info" style="font-weight: normal">
+            <?php if ($block->isDisplaySize() && $item->isFileContent()): ?>
+                (<?= /* @noEscape */
+                __('Size') ?>: <?= $block->escapeHtml($block->getPrepareFileSize($item->getSize())) ?>)
+            <?php endif; ?>
+            <?php if ($block->isDisplayDownloads() && $item->isFileContent()): ?>
+                <?= $block->escapeHtml(__('Downloads')) ?>: <?= $block->escapeHtml($item->getDownloads()) ?>
+            <?php endif; ?>
+        </span>
+    </dt>
+    <dd>
+        <?php if ($item->getDescription()): ?>
+            <span class="item-description">
+                <?= $block->escapeHtml($item->getDescription()); ?>
+            </span>
+        <?php endif; ?>
+    </dd>
+</div>

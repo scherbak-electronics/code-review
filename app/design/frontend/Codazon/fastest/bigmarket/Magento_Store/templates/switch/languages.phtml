@@ -1,0 +1,54 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var \Magento\Store\Block\Switcher $block */
+$objectManager =  \Magento\Framework\App\ObjectManager::getInstance();        
+$storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+$currentStore = $storeManager->getStore();
+$websiteId=$currentStore->getWebsiteId();
+$mediaUrl = $objectManager->get('Magento\Store\Model\StoreManagerInterface')->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+
+$slect="";
+$selang= "";
+$lang="";
+$href = 'https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+$currency ='<i class="fa fa-usd" aria-hidden="true"></i>';
+if($websiteId==1){
+    $img =$mediaUrl."usa.jpg";
+    $slect=$mediaUrl."cad.png";
+    $href =str_replace("lumenstarled.com","lumenstarled.com/us",$href);
+    $selang = "CAD $currency";
+    $lang="USD $currency";
+}else{
+    $img =$mediaUrl."cad.png";
+    $slect=$mediaUrl."usa.jpg";
+    $href =str_replace("lumenstarled.com/us","lumenstarled.com",$href);
+    $selang = "USD $currency";
+    $lang="CAD $currency";
+}
+
+?>
+
+<div class="switcher language switcher-language" data-ui-id="language-switcher" id="switcher-language">
+    <div class="actions dropdown options switcher-options">
+            <div class='custom-select'>
+                <div class="selected">
+                   <span class='text'><img  src="<?php echo $slect;?>" width="30" style="margin-right: 3px;vertical-align:text-top;" /> <?php echo $selang; ?>
+                   </span>
+                </div>
+                <div class='select-box'>
+                   <ul class='select-list'>
+                     
+                      <li  id="selectcountry" dir="<?php echo $href; ?>" style="cursor: pointer;;">
+                         <a href="javascript:void(-1);"><img src="<?php echo $img;?>" width="30" />&nbsp;<?php echo $lang; ?></a>
+                      </li>
+                     
+                   </ul>
+                </div>
+</div>   
+            
+    </div>
+</div>

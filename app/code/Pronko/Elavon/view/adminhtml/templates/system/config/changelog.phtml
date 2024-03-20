@@ -1,0 +1,15 @@
+<?php
+/**
+ * Copyright © Pronko Consulting
+ * See LICENSE for license details.
+ */
+
+/** @var \Pronko\Elavon\Block\Adminhtml\System\Config\Changelog $block */
+?>
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Pronko_Elavon/js/changelog": <?= /* @noEscape */ $block->getChangelogJson(); ?>
+    }
+}
+</script>

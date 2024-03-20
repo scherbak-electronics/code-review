@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright (c) 2019. Cart2Quote B.V. All rights reserved.
+  ~ See COPYING.txt for license details.
+  -->
+
+<!--
+/**
+ * Cart2Quote
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <cart2quote_quotation>
+            <proposal>
+                <auto_proposal>0</auto_proposal>
+                <auto_proposal_delay>0</auto_proposal_delay>
+                <auto_proposal_strategy>tier_pricing</auto_proposal_strategy>
+            </proposal>
+        </cart2quote_quotation>
+        <cart2quote_email>
+            <notify_salesrep>
+                <enabled>1</enabled>
+                <template>cart2quote_email_notify_salesrep_template</template>
+                <identity>sales</identity>
+                <copy_method>bcc</copy_method>
+            </notify_salesrep>
+        </cart2quote_email>
+    </default>
+</config>

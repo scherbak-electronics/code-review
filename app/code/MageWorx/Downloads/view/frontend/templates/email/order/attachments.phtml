@@ -1,0 +1,30 @@
+<?php
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+
+/** @var \MageWorx\Downloads\Block\Order\EmailAttachments $block */
+$attachments = $block->getAttachments();
+?>
+<?php if ($attachments): ?>
+    <dl class="product-attachment-container" style="padding-left: unset; padding-top: 5px">
+        <?php if ($block->isGroupBySection()): ?>
+            <?php $pseudoSections = $block->getGroupAttachments(); ?>
+            <?php foreach ($pseudoSections as $pseudoSection): ?>
+                <dt class="section-title"><strong><?= $block->escapeHtml($pseudoSection['title']) ?></strong></dt>
+                <dd class="section-files">
+                    <dl style="padding-left: 10px">
+                        <?php foreach ($pseudoSection['attachments'] as $item): ?>
+                            <?= $block->getAttachmentHtml($item); ?>
+                        <?php endforeach; ?>
+                    </dl>
+                </dd>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <?php foreach ($attachments as $attachment): ?>
+                <?= $block->getAttachmentHtml($attachment); ?>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </dl>
+<?php endif; ?>

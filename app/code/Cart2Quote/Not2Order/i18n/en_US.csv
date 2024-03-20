@@ -1,0 +1,32 @@
+"Open link in a new window or tab","Open link in a new window or tab"
+"Open link in the same page","Open link in the same page"
+Yes,Yes
+No,No
+"Only for selected customer groups","Only for selected customer groups"
+"Use config","Use config"
+"Hide Product Price","Hide Product Price"
+"Hide Order Button","Hide 'add to cart' Button"
+Cart2Quote,Cart2Quote
+Not2Order,Not2Order
+General,General
+"Enable Not2Order","Enable Not2Order"
+Global,Global
+"Hide order references","Hide order references"
+"Hide 'add to cart' button","Hide 'add to cart' button"
+"Hide 'add to cart' button for user groups","Hide 'add to cart' button for user groups"
+"Hide price","Hide price"
+"Hide price for user groups","Hide price for user groups"
+"Replacement Button","Replacement Button"
+"Replace hidden buttons","Replace hidden buttons"
+Title,Title
+URL,URL
+"CSS Classes","CSS Classes"
+Target,Target
+"The product '%1' is not orderable and cannot be added to your shopping cart.","The product '%1' is not orderable and cannot be added to your shopping cart."
+Advanced,Advanced
+"Cart block name","Cart block name"
+"The block that gets removed on rendering when the ""hide order references"" condition is set.","The block that gets removed on rendering when the ""hide order references"" condition is set."
+"Product page 'Add To Cart' button id name","Product page 'Add To Cart' button id name"
+"The button id for 'Add To Cart' on product page.","The button id for 'Add To Cart' on product page."
+"'Add To Cart' button class name","'Add To Cart' button class name"
+"The button class for 'Add To Cart'.","The button class for 'Add To Cart'."

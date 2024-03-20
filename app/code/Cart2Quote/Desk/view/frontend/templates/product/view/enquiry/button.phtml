@@ -1,0 +1,18 @@
+<?php
+/*
+ * Copyright (c) 2020. Cart2Quote B.V. All rights reserved.
+ * See COPYING.txt for license details.
+ * @codingStandardsIgnoreFile
+ */
+
+/** @var \Cart2Quote\Desk\Block\Product\View\Enquire $block */
+?>
+
+<button
+    type="button"
+    title="<?php echo $block->escapeHtml(__('Make Product Enquiry')) ?>"
+    class="action primary enquire product-enquire-button"
+    id="product_enquire_button"
+    data-mage-init='{"desk.popup.enquiry.form":{}}'>
+    <span><?php echo $block->escapeHtml(__('Make Product Enquiry')) ?></span>
+</button>

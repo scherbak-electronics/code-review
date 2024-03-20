@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright (c) 2020. Cart2Quote B.V. All rights reserved.
+  ~ See COPYING.txt for license details.
+  -->
+
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="desk_message_template" resource="default" engine="innodb" comment="SupportDesk Message Template">
+        <column xsi:type="int" name="message_id" padding="10" unsigned="false" nullable="false" identity="true"
+                comment="Message ID"/>
+        <column xsi:type="varchar" name="title" nullable="false" length="255" comment="Message Title"/>
+        <column xsi:type="smallint" name="is_active" padding="6" unsigned="true" nullable="false" identity="false"
+                default="1" comment="Active Status"/>
+        <column xsi:type="text" name="content" nullable="true" comment="Message Content"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Creation Time"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Modification Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="message_id"/>
+        </constraint>
+    </table>
+</schema>

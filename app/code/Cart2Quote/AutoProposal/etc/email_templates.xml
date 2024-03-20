@@ -1,0 +1,13 @@
+<?xml version="1.0"?><!--
+  ~ Copyright (c) 2019. Cart2Quote B.V. All rights reserved.
+  ~ See COPYING.txt for license details.
+  -->
+
+<!--
+/**
+ * Cart2Quote
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="cart2quote_email_notify_salesrep_template" label="Notify salesrep" file="notify_salesrep.html" type="html" module="Cart2Quote_AutoProposal" area="frontend"/>
+</config>

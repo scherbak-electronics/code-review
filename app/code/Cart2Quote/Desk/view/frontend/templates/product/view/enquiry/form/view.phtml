@@ -1,0 +1,99 @@
+<?php
+/*
+ * Copyright (c) 2020. Cart2Quote B.V. All rights reserved.
+ * See COPYING.txt for license details.
+ * @codingStandardsIgnoreFile
+ */
+
+/** @var \Cart2Quote\Desk\Block\Product\View\Enquiry\Form $block */
+
+$product = $block->getProductInfo();
+$productName = $block->escapeHtml($block->getProductInfo()->getName());
+$submitEnquiry = $block->getEnquiryAction(); ?>
+
+<div class="block-content ticket-enquiry-form-content" id="enquiry_form_modal_popup" style="display: none;">
+    <form action="<?php echo $block->getEnquiryAction() ?>"
+          method="post"
+          class="ticket_enquiry_form"
+          id="enquiry_popup_data"
+          data-role="product-ticket-form"
+          data-mage-init='{"desk.submit.enquiry": {}}'>
+        <fieldset class="fieldset ticket-fieldset review-fieldset" id="enquiry_popup_data_fieldset">
+            <legend class="legend review-legend ticket-legend">
+                <span><?php echo __("Ask a question about:"); ?></span>
+                <strong><?php echo $block->escapeHtml($block->getProductInfo()->getName()) ?></strong>
+            </legend>
+            <div class="field email required" name="enquiry_message" id="enquiry-message">
+                <label class="label enquiry_form_label"
+                       for="enquiry_message_enquiry_form"><span><?php echo __('Enquiry Message') ?></span></label>
+                <div class="field name required">
+                    <textarea name="message[message]"
+                              id="enquiry_message_enquiry_form"
+                              cols="5"
+                              rows="3"
+                              placeholder="<?php echo __("Enter Enquiry Message") ?>"
+                              data-validate="{required:true}"></textarea>
+                </div>
+            </div>
+            <?php if (!$block->isLoggedIn()) : ?>
+                <div class="field firstname required">
+                    <label class="label" for="firstname_enquiry_form"><span><?php echo __('First Name') ?></span></label>
+                    <div class="control">
+                        <input type="text"
+                               name="customer[firstname]"
+                               id="firstname_enquiry_form"
+                               class="input-text required-entry"
+                               data-validate="{required:true, 'letters-with-basic-punc':true}"
+                               placeholder="<?php echo __("Enter First Name") ?>"/>
+                    </div>
+                </div>
+                <br>
+                <div class="field lastname required">
+                    <label class="label enquiry_form_label"
+                           for="lastname_enquiry_form"><span><?php echo __('Last Name') ?></span></label>
+                    <div class="field name required enquiry-non-registered-users">
+                        <input type="text"
+                               name="customer[lastname]"
+                               id="lastname_enquiry_form"
+                               data-validate="{required:true, 'letters-with-basic-punc':true}"
+                               class="input-text required-entry" placeholder="<?php echo __("Enter Last Name") ?>"
+                        />
+                    </div>
+                </div>
+                <br>
+                <div class="field name required">
+                    <label class="label enquiry_form_label"
+                           for="email_enquiry_form"><span><?php echo __('Email Address') ?></span></label>
+                    <div class="enquiry_form_email field email required enquiry-non-registered-users">
+                        <div class="control required">
+                            <input type="email"
+                                   name="customer[email]"
+                                   id="email_enquiry_form"
+                                   class="input-text required-entry"
+                                   placeholder="<?php echo __("Enter Email Address") ?>"
+                                   data-validate="{required:true, 'validate-email':true}"/>
+                        </div>
+                    </div>
+                </div>
+            <?php endif; ?>
+        </fieldset>
+        <div class="actions-toolbar">
+            <div class="primary">
+                <button type="submit"
+                        id="enquiry_form_submit_form"
+                        class="action submit primary"
+                        title="<?php echo __('Submit') ?>">
+                    <span><?php echo __("Submit Enquiry") ?></span>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "#enquiry_popup_data": {
+            "validation": {}
+        }
+    }
+</script>

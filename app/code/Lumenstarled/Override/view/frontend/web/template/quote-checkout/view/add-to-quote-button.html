@@ -1,0 +1,55 @@
+<form class="form methods-shipping" id="co-add-to-quote-form" data-mage-init='{"validation": {}}'
+      data-bind="submit: validateQuote, visible: showRequestButton"">
+	<div class="lumenstarled_override_fields">
+		<div class="field-row">
+			<span class="label">Business name: </span>
+			<span class="field"><input type="text" name="company" data-validate="{required:true}"></span>
+		</div>
+		<div class="field-row">
+			<span class="label">Currency: </span>
+			<span class="field">
+				<select name="quote_currency_code" afterRender="setDefaultCurrency" data-bind="event:{ change: changeCurrency}">
+					<option value="CAD">CAD</option>
+					<option value="USD">USD</option>
+				</select>
+			</span>
+		</div>
+		<style>
+		#co-add-to-quote-form .lumenstarled_override_fields .field-row{
+			display:inline-block;
+			width:100%;
+			line-height:30px;
+			font-size:12px;
+		}
+		#co-add-to-quote-form .lumenstarled_override_fields .field-row span{
+			float:left;
+		}
+		#co-add-to-quote-form .lumenstarled_override_fields .field-row span.label{
+			width:32%;
+			padding:5px 0;
+			font-weight:bold;
+		}
+		#co-add-to-quote-form .lumenstarled_override_fields .field-row span.field{
+			width:68%;
+		}
+		</style>
+		
+	</div>
+    <ul class="checkout methods items checkout-methods-items">
+        <li class="item">
+            <button data-role="opc-add-to-quote" type="submit" class="action primary checkout">
+                <span><!-- ko i18n: 'Submit Quote Request'--><!-- /ko --></span>
+            </button>
+        </li>
+    </ul> 
+</form>
+
+<ul class="checkout methods items checkout-methods-items" data-bind="visible: showLoginButton">
+    <li class="item">
+        <button class="action primary checkout login"
+                data-bind="afterRender: setLoginModalEvents"
+                data-mage-init='{"loginPopup":{}}'>
+            <span><!-- ko i18n: 'Login to request a Quote'--><!-- /ko --></span>
+        </button>
+    </li>
+</ul>

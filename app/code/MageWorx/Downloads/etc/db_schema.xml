@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+  <table name="mageworx_downloads_attachment" resource="default" engine="innodb" comment="mageworx_downloads_attachment">
+    <column xsi:type="int" name="attachment_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Attachment ID"/>
+    <column xsi:type="int" name="section_id" padding="10" unsigned="true" nullable="false" identity="false" default="1" comment="Section ID"/>
+    <column xsi:type="text" name="name" nullable="false" comment="Name" disabled="true"/>
+    <column xsi:type="smallint" name="is_attach" padding="5" unsigned="true" nullable="false" identity="false" default="0" comment="Is Attach"/>
+    <column xsi:type="text" name="filename" nullable="true" comment="File Name"/>
+    <column xsi:type="text" name="url" nullable="true" comment="URL"/>
+    <column xsi:type="varchar" name="type" nullable="true" length="16" comment="Type (url/file/...)"/>
+    <column xsi:type="int" name="size" padding="10" unsigned="true" nullable="false" identity="false" default="0" comment="Size"/>
+    <column xsi:type="text" name="description" nullable="false" comment="Description" disabled="true"/>
+    <column xsi:type="smallint" name="allow_guests" padding="5" unsigned="true" nullable="false" identity="false" default="1" comment="Allow Quests"/>
+    <column xsi:type="int" name="downloads" padding="10" unsigned="true" nullable="false" identity="false" comment="Downloads"/>
+    <column xsi:type="int" name="downloads_limit" padding="10" unsigned="true" nullable="false" identity="false" comment="Downloads Limit"/>
+    <column xsi:type="timestamp" name="date_modified" on_update="false" nullable="true" comment="Last Modify Date"/>
+    <column xsi:type="timestamp" name="date_added" on_update="false" nullable="true" comment="Added Date"/>
+    <column xsi:type="smallint" name="is_active" padding="5" unsigned="true" nullable="false" identity="false" default="0" comment="Is Active"/>
+    <column xsi:type="varchar" name="filetype" nullable="true" length="16" comment="File Type" onCreate="migrateDataFrom(type)"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="attachment_id"/>
+    </constraint>
+    <index referenceId="MAGEWORX_DOWNLOADS_ATTACHMENT_IS_ACTIVE" indexType="btree">
+      <column name="is_active"/>
+    </index>
+    <index referenceId="MAGEWORX_DOWNLOADS_ATTACHMENT_DOWNLOADS" indexType="btree">
+      <column name="downloads"/>
+    </index>
+    <index referenceId="MAGEWORX_DOWNLOADS_ATTACHMENT_DOWNLOADS_LIMIT" indexType="btree">
+      <column name="downloads_limit"/>
+    </index>
+  </table>
+  <table name="mageworx_downloads_section" resource="default" engine="innodb" comment="mageworx_downloads_section">
+    <column xsi:type="int" name="section_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Section ID"/>
+    <column xsi:type="text" name="name" nullable="false" comment="Name" disabled="true"/>
+    <column xsi:type="text" name="description" nullable="false" comment="Description" disabled="true"/>
+    <column xsi:type="smallint" name="is_active" padding="5" unsigned="true" nullable="false" identity="false" default="0" comment="Is Active"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="section_id"/>
+    </constraint>
+  </table>
+  <table name="mageworx_downloads_attachment_store" resource="default" engine="innodb" comment="Attachments To Store Linkage Table">
+    <column xsi:type="int" name="attachment_id" padding="10" unsigned="true" nullable="false" identity="false" comment="Attachment ID"/>
+    <column xsi:type="smallint" name="store_id" padding="5" unsigned="true" nullable="false" identity="false" comment="Store ID"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="attachment_id"/>
+      <column name="store_id"/>
+    </constraint>
+    <constraint xsi:type="foreign" referenceId="FK_39530FC00EAB36F85512908F527038D6" table="mageworx_downloads_attachment_store" column="attachment_id" referenceTable="mageworx_downloads_attachment" referenceColumn="attachment_id" onDelete="CASCADE"/>
+    <constraint xsi:type="foreign" referenceId="MAGEWORX_DOWNLOADS_ATTACHMENT_STORE_ATTACHMENT_ID_STORE_STORE_ID" table="mageworx_downloads_attachment_store" column="store_id" referenceTable="store" referenceColumn="store_id" onDelete="CASCADE"/>
+    <index referenceId="MAGEWORX_DOWNLOADS_ATTACHMENT_STORE_STORE_ID" indexType="btree">
+      <column name="store_id"/>
+    </index>
+  </table>
+  <table name="mageworx_downloads_product_relation" resource="default" engine="innodb" comment="Attachments To Products And Options Linkage Table">
+    <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true" comment="ID"/>
+    <column xsi:type="int" name="attachment_id" padding="10" unsigned="true" nullable="false" identity="false" comment="Attachment ID"/>
+    <column xsi:type="int" name="product_id" padding="10" unsigned="true" nullable="false" identity="false" comment="Product ID"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="id"/>
+    </constraint>
+    <constraint xsi:type="foreign" referenceId="FK_9BDDE0A1845463BCC1D9BC1FB99137D4" table="mageworx_downloads_product_relation" column="attachment_id" referenceTable="mageworx_downloads_attachment" referenceColumn="attachment_id" onDelete="CASCADE"/>
+    <constraint xsi:type="foreign" referenceId="MAGEWORX_DOWNLOADS_PRD_RELATION_PRD_ID_CAT_PRD_ENTT_ENTT_ID" table="mageworx_downloads_product_relation" column="product_id" referenceTable="catalog_product_entity" referenceColumn="entity_id" onDelete="CASCADE"/>
+    <constraint xsi:type="unique" referenceId="MAGEWORX_DOWNLOADS_PRODUCT_RELATION_ATTACHMENT_ID_PRODUCT_ID">
+      <column name="attachment_id"/>
+      <column name="product_id"/>
+    </constraint>
+  </table>
+  <table name="mageworx_downloads_attachment_customer_group" resource="default" engine="innodb" comment="MageWorx Attachments To Customer Groups Relations">
+    <column xsi:type="int" name="attachment_id" padding="10" unsigned="true" nullable="false" identity="false" comment="Attachment ID"/>
+    <column xsi:type="int" name="customer_group_id" padding="10" unsigned="true" nullable="false" identity="false" comment="Customer Group ID"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="attachment_id"/>
+      <column name="customer_group_id"/>
+    </constraint>
+    <constraint xsi:type="foreign" referenceId="FK_0EA1F1EE318E6415C6E3AC7790BBA55C" table="mageworx_downloads_attachment_customer_group" column="attachment_id" referenceTable="mageworx_downloads_attachment" referenceColumn="attachment_id" onDelete="CASCADE"/>
+    <constraint xsi:type="foreign" referenceId="FK_543E2B0AC145B3B59B7BF81554A95C1A" table="mageworx_downloads_attachment_customer_group" column="customer_group_id" referenceTable="customer_group" referenceColumn="customer_group_id" onDelete="CASCADE"/>
+    <index referenceId="MAGEWORX_DOWNLOADS_ATTACHMENT_CUSTOMER_GROUP_CUSTOMER_GROUP_ID" indexType="btree">
+      <column name="customer_group_id"/>
+    </index>
+  </table>
+  <table name="mageworx_downloads_attachment_locale" resource="default" engine="innodb" comment="Downloads Attachment Locale Table">
+    <column xsi:type="int" name="attachment_locale_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Attachment Locale ID"/>
+    <column xsi:type="int" name="attachment_id" padding="10" unsigned="true" nullable="false" identity="false" comment="Attachment ID"/>
+    <column xsi:type="smallint" name="store_id" padding="5" unsigned="true" nullable="false" identity="false" default="0" comment="Store ID"/>
+    <column xsi:type="text" name="name" nullable="false" comment="Attachment Name"/>
+    <column xsi:type="text" name="description" nullable="false" comment="Attachment Description"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="attachment_locale_id"/>
+    </constraint>
+    <constraint xsi:type="foreign" referenceId="FK_38357E78BE2585AFE77FBAD26378D4E4" table="mageworx_downloads_attachment_locale" column="attachment_id" referenceTable="mageworx_downloads_attachment" referenceColumn="attachment_id" onDelete="CASCADE"/>
+    <constraint xsi:type="foreign" referenceId="MAGEWORX_DOWNLOADS_ATTACHMENT_LOCALE_STORE_ID_STORE_STORE_ID" table="mageworx_downloads_attachment_locale" column="store_id" referenceTable="store" referenceColumn="store_id" onDelete="CASCADE"/>
+    <constraint xsi:type="unique" referenceId="MAGEWORX_DOWNLOADS_ATTACHMENT_LOCALE_ATTACHMENT_ID_STORE_ID">
+      <column name="attachment_id"/>
+      <column name="store_id"/>
+    </constraint>
+  </table>
+  <table name="mageworx_downloads_section_locale" resource="default" engine="innodb" comment="Downloads Section Locale Table">
+    <column xsi:type="int" name="section_locale_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Section Locale ID"/>
+    <column xsi:type="int" name="section_id" padding="10" unsigned="true" nullable="false" identity="false" comment="Section ID"/>
+    <column xsi:type="smallint" name="store_id" padding="5" unsigned="true" nullable="false" identity="false" default="0" comment="Store ID"/>
+    <column xsi:type="text" name="name" nullable="false" comment="Section Name"/>
+    <column xsi:type="text" name="description" nullable="false" comment="Section Description"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="section_locale_id"/>
+    </constraint>
+    <constraint xsi:type="foreign" referenceId="FK_F2B570312323888A495DE4DCDD4AC2CC" table="mageworx_downloads_section_locale" column="section_id" referenceTable="mageworx_downloads_section" referenceColumn="section_id" onDelete="CASCADE"/>
+    <constraint xsi:type="foreign" referenceId="MAGEWORX_DOWNLOADS_SECTION_LOCALE_STORE_ID_STORE_STORE_ID" table="mageworx_downloads_section_locale" column="store_id" referenceTable="store" referenceColumn="store_id" onDelete="CASCADE"/>
+    <constraint xsi:type="unique" referenceId="MAGEWORX_DOWNLOADS_SECTION_LOCALE_SECTION_ID_STORE_ID">
+      <column name="section_id"/>
+      <column name="store_id"/>
+    </constraint>
+  </table>
+</schema>

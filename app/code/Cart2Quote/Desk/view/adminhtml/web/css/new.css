@@ -1,0 +1,20 @@
+/*
+ * Copyright (c) 2019. Cart2Quote B.V. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/* Status */
+.desk-ticket-new .page-title-wrapper h1{display:inline-block;}
+.desk-ticket-new .ticket-status {display:table-cell;text-align:right;vertical-align:middle;font-size:16px;margin-top:5px;margin-right:20px;float:left;}
+.desk-ticket-new .ticket-status span {display:inline-block;border-radius:100px;font-size:80%;color:#ffffff;padding:5px 20px;cursor:default;}
+.desk-ticket-new .ticket-status.new span {background:#f5ca00;}
+.desk-ticket-new .ticket-status.new span:after {content:'New';}
+.desk-ticket-new .ticket-status.open span {background:#e82a2a;}
+.desk-ticket-new .ticket-status.open span:after {content:'Open';}
+.desk-ticket-new .ticket-status.pending span {background:#47aede;}
+.desk-ticket-new .ticket-status.pending span:after {content:'Pending';}
+.desk-ticket-new .ticket-status.on-hold span {background:#000000;}
+.desk-ticket-new .ticket-status.on-hold span:after {content:'On-hold';}
+.desk-ticket-new .ticket-status.solved span {background:#828282;}
+.desk-ticket-new .ticket-status.solved span:after {content:'Solved';}
+

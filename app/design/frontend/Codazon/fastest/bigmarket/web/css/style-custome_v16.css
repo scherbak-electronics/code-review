@@ -1,0 +1,132 @@
+  .header-wrapper-content.sticky-menu.active {
+    box-shadow: 0 0 5px #222222a8 !important;
+    -moz-box-shadow: 0 0 5px #222222a8 !important;
+    -webkit-box-shadow: 0 0 5px #222222a8 !important;
+    -o-box-shadow: 0 0 5px #222222a8 !important;
+    -ms-box-shadow: 0 0 5px #222222a8 !important;
+}
+.page-main {
+    margin-top: 40px !important;
+}
+.products-grid .cdz-product-bottom .action.tocart {
+    display: none;
+}
+.qs-modal .modal-popup .modal-content .quickshop-wrapper .quickshop-media.product.media {
+    width: 50% !important;
+}
+.modal-inner-wrap #quickshop-info-main {
+    width: 100% !important;
+}
+.catalog-product-view .block-actions {
+    display: none;
+}
+.product-item-details .product-item-name + .product-item-pricing {
+    margin-top: 35px;
+}
+#miniquote-content-wrapper .item.product.product-item .product {
+    overflow: auto;
+}
+#miniquote-content-wrapper .item.product.product-item .product .options {
+    overflow: visible !important;
+}
+.fotorama__wrap .fotorama__arr.fotorama__arr--prev,
+.fotorama__wrap .fotorama__arr.fotorama__arr--next {
+    display: block !important;
+}
+.cms-home .wrapper-ads08 .box.go-box:after {
+    content: '\f167';
+}
+.quotation-quote-index #checkout .opc-wrapper .step-title {
+    padding: 14px 17px;
+}
+.quotation-quote-index #checkout #quotation-fields .field .label {
+    padding: 0 17px;
+}
+.account .block-collapsible-nav .item:nth-child(2),
+.account .block-collapsible-nav .item:nth-child(5) {
+    display: none;
+}
+@media screen and (min-width: 769px) {
+    .widget.blog-search .action.search {
+        width: 33px !important;
+        height: 33px !important;
+    }
+}
+.widget.blog-search .action.search:before {
+    content: "" !important;
+}
+.widget.blog-search .action.search{
+    background-color: #fff !important;
+}
+.catalog-product-view .block.related:not(.block-static-block) .block-title,
+.related .block-title.title {
+    color: #fff !important;
+}
+.block-search .control {
+    background-color: transparent;
+}
+
+/*fix*/
+@media (min-width: 768px){
+    .header.panel > .header.links > li > a,
+    .header.panel > .header.links > li > a:visited {
+        color: #ffffff !important;
+    }
+    .page-footer .block.newsletter input {
+        border-color: #ffffff !important;
+    }
+    .footer-text {
+        font: 400 14px/1.35 Poppins, Helvetica Neue, Verdana, Arial, sans-serif;
+    }
+    .page-footer .footer-link li {
+     border-bottom: 1px solid #e8e8e8 !important;
+    }
+    .page-footer a {
+        color: #777777 !important;
+    }
+    .cdz-main-menu .cdz-horizontal-menu li.level0 > a.menu-link {
+        font: 400 15px/1.35 Poppins, Helvetica Neue, Verdana, Arial, sans-serif !important;
+    }
+    .slideshow-wrapper .cdz-main-menu .cdz-vertical-menu li.level0 > a.menu-link {
+        color: #6e6e6e !important;
+        font: 400 12px/1.35 Poppins, Helvetica Neue, Verdana, Arial, sans-serif;
+    }
+    .slideshow-wrapper .cdz-main-menu .cdz-vertical-menu li.level0 > a.menu-link:visited{
+        color: #6e6e6e !important;
+        font: 400 12px/1.35 Poppins, Helvetica Neue, Verdana, Arial, sans-serif;
+    }
+    .slideshow-wrapper .cdz-main-menu .cdz-vertical-menu li.level0 > a.menu-link:hover{
+        color: #fff !important;
+    }
+}
+.page-footer a {
+        color: #777777 !important;
+    }
+.page-footer a {
+    color: #777777 !important;
+}
+.page-footer{
+    color: #777777 !important;
+}
+a:visited {
+    color: #777777;
+}
+.page-main .sidebar .block:not(.block-static-block) .block-title {
+    color: #ffffff;
+    font: 400 16px/1.35 Poppins, Helvetica Neue, Verdana, Arial, sans-serif;
+}
+.page-header .panel.wrapper {
+    color: #fff;
+}
+h5, .h5 {
+    font: 400 14px/1.35 Poppins, Helvetica Neue, Verdana, Arial, sans-serif;
+}
+.page-main .sidebar .block:not(.block-static-block) .block-title strong {
+    font: 400 16px/1.35 Poppins, Helvetica Neue, Verdana, Arial, sans-serif !important;
+}
+.page-footer .copyright {
+    font: 400 14px/1.35 Poppins, Helvetica Neue, Verdana, Arial, sans-serif !important;
+}
+.left-navigation .navigation .menu-title {
+    font: 400 16px/1.35 Poppins, Helvetica Neue, Verdana, Arial, sans-serif !important;
+}

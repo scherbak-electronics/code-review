@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright (c) 2019. Cart2Quote B.V. All rights reserved.
+  ~ See COPYING.txt for license details.
+  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Cart2Quote_Desk::desk" title="Customer Supportdesk" translate="title" module="Cart2Quote_Desk" sortOrder="100" parent="Magento_Customer::customer" resource="Cart2Quote_Desk::ticket_view"/>
+        <add id="Cart2Quote_Desk::desk_tickets" title="Tickets" translate="title" sortOrder="10" module="Cart2Quote_Desk" parent="Cart2Quote_Desk::desk" action="desk/ticket/index" resource="Cart2Quote_Desk::ticket_view"/>
+    </menu>
+</config>

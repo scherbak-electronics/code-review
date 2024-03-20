@@ -1,0 +1,141 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright (c) 2020. Cart2Quote B.V. All rights reserved.
+  ~ See COPYING.txt for license details.
+  -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Config/etc/system_file.xsd">
+    <system>
+        <tab id="cart2quote" translate="label" sortOrder="310">
+            <label>Cart2Quote</label>
+        </tab>
+        <section id="cart2quote_not2order" translate="label" sortOrder="800" showInDefault="1" showInWebsite="1" showInStore="1" type="text">
+            <class>separator-top</class>
+            <label>Not2Order</label>
+            <tab>cart2quote</tab>
+            <resource>Cart2Quote_Not2Order::not2order_settings</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <comment>
+                    <![CDATA[<div class="box">
+                    <p><b>Not2Order for Magento 2 ( version 2.1.4 ) provided by <a href="https://www.not2order.com">Cart2Quote | B2B Magento extensions</a></b></p>
+                    For documentation and support visit <a href="https://www.cart2quote.com">www.cart2quote.com</a>  or contact: <a href="mailto:support@cart2quote.com">support@cart2quote.com</a>
+                    </div>]]>
+                </comment>
+                <field id="enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Not2Order</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>If setting is set to NO, Not2Order will not interfere.</comment>
+                </field>
+            </group>
+            <group id="global" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Global</label>
+                <field id="hidecart" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Hide order references</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Hides the 'add to cart' button, the minicart and other cart references.</comment>
+                </field>
+                <field id="hidebutton" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Hide 'add to cart' button</label>
+                    <source_model>Cart2Quote\Not2Order\Model\Config\YesNoCustomerGroup</source_model>
+                    <comment>This 'add to cart' button visibility setting can be overwritten and configured per product in product setting.</comment>
+                </field>
+                <field id="hidebutton_groups" translate="label" type="multiselect" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Hide 'add to cart' button for user groups</label>
+                    <source_model>Cart2Quote\Not2Order\Model\Config\CustomerGroups</source_model>
+                    <can_be_empty>1</can_be_empty>
+                    <depends>
+                        <field id="hidebutton">2</field>
+                    </depends>
+                </field>
+                <field id="hideprice" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Hide price</label>
+                    <source_model>Cart2Quote\Not2Order\Model\Config\YesNoCustomerGroup</source_model>
+                    <comment>This price visibility setting can be overwritten and configured per product in product settings.</comment>
+                </field>
+                <field id="hideprice_groups" translate="label" type="multiselect" sortOrder="21" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Hide price for user groups</label>
+                    <source_model>Cart2Quote\Not2Order\Model\Config\CustomerGroups</source_model>
+                    <can_be_empty>1</can_be_empty>
+                    <depends>
+                        <field id="hideprice">2</field>
+                    </depends>
+                </field>
+                <field id="hidemetadataprice" translate="label" type="select" sortOrder="22" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Hide price in product metaData</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Choose whether to display the product prices in metadata. When enabled, price will be replaced with "Price on Request".</comment>
+                </field>
+                <field id="replace_price" translate="label" type="text" sortOrder="23" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Replace Price</label>
+                    <source_model>Magento\Cms\Model\Config\Source\Page</source_model>
+                    <comment>Replace the Price on the Product View page. The default is: "Price on Request". Clear the above text-area to disable.</comment>
+                </field>
+                <field id="disablepricezero" translate="label" type="select" sortOrder="24" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Disable order button if price zero</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="replacement_btn" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Replacement Button</label>
+                <field id="enable" translate="label" type="select" sortOrder="31" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Replace hidden buttons</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>If Yes, Not2Order will replace the button instead of hiding it.</comment>
+                </field>
+                <field id="title" translate="label" type="text" sortOrder="32" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Title</label>
+                    <source_model>Magento\Cms\Model\Config\Source\Page</source_model>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="url" translate="label" type="text" sortOrder="33" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>URL</label>
+                    <source_model>Magento\Cms\Model\Config\Source\Page</source_model>
+                    <comment>Include 'http://'.</comment>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="classes" translate="label" type="text" sortOrder="43" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>CSS Classes</label>
+                    <source_model>Magento\Cms\Model\Config\Source\Page</source_model>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="target" translate="label" type="select" sortOrder="53" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Target</label>
+                    <source_model>Cart2Quote\Not2Order\Model\Config\ReplacementButton\Target</source_model>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="advanced" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Advanced</label>
+                <field id="minicartdivclass" translate="label comment" type="text" sortOrder="21" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Minicart div class name</label>
+                    <comment>The 'div' tag class name for minicart. Default value: "minicart-wrapper"</comment>
+                </field>
+                <field id="minicartaclass" translate="label comment" type="text" sortOrder="22" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Minicart 'a' class name</label>
+                    <comment>The 'a' tag class name for minicart. Default value: "action showcart"</comment>
+                </field>
+                <field id="addtocartid" translate="label comment" type="text" sortOrder="23" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product page 'Add To Cart' button id name</label>
+                    <comment>The 'button' tag id for 'Add To Cart' on the product pages. Default value: "product-addtocart-button"</comment>
+                </field>
+                <field id="addtocartclass" translate="label comment" type="text" sortOrder="24" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Category page 'Add To Cart' button class name</label>
+                    <comment>The 'button' tag class for 'Add To Cart' on the category pages. Default value: "action tocart primary"</comment>
+                </field>
+                <field id="instantcheckoutclass" translate="label comment" type="text" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Extra product page instant checkout div class</label>
+                    <comment>Instant checkout buttons are removed, but sometimes a theme has some extra content, add the div class around that extra content here.</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

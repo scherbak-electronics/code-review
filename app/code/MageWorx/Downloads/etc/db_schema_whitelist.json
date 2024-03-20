@@ -1,0 +1,103 @@
+{
+    "mageworx_downloads_attachment": {
+        "column": {
+            "attachment_id": true,
+            "section_id": true,
+            "is_attach": true,
+            "filename": true,
+            "url": true,
+            "type": true,
+            "size": true,
+            "allow_guests": true,
+            "downloads": true,
+            "downloads_limit": true,
+            "date_modified": true,
+            "date_added": true,
+            "is_active": true,
+            "filetype": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "mageworx_downloads_section": {
+        "column": {
+            "section_id": true,
+            "is_active": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "mageworx_downloads_attachment_store": {
+        "column": {
+            "attachment_id": true,
+            "store_id": true
+        },
+        "index": {
+            "MAGEWORX_DOWNLOADS_ATTACHMENT_STORE_STORE_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "FK_39530FC00EAB36F85512908F527038D6": true,
+            "MAGEWORX_DOWNLOADS_ATTACHMENT_STORE_STORE_ID_STORE_STORE_ID": true
+        }
+    },
+    "mageworx_downloads_product_relation": {
+        "column": {
+            "id": true,
+            "attachment_id": true,
+            "product_id": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "FK_9BDDE0A1845463BCC1D9BC1FB99137D4": true,
+            "MAGEWORX_DOWNLOADS_PRD_RELATION_PRD_ID_CAT_PRD_ENTT_ENTT_ID": true,
+            "MAGEWORX_DOWNLOADS_PRODUCT_RELATION_ATTACHMENT_ID_PRODUCT_ID": true
+        }
+    },
+    "mageworx_downloads_attachment_customer_group": {
+        "column": {
+            "attachment_id": true,
+            "customer_group_id": true
+        },
+        "index": {
+            "MAGEWORX_DOWNLOADS_ATTACHMENT_CUSTOMER_GROUP_CUSTOMER_GROUP_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "FK_0EA1F1EE318E6415C6E3AC7790BBA55C": true,
+            "FK_543E2B0AC145B3B59B7BF81554A95C1A": true
+        }
+    },
+    "mageworx_downloads_attachment_locale": {
+        "column": {
+            "attachment_locale_id": true,
+            "attachment_id": true,
+            "store_id": true,
+            "name": true,
+            "description": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "FK_42BF5A71CEC75688F3EBE884C6010640": true,
+            "MAGEWORX_DOWNLOADS_ATTACHMENT_LOCALE_STORE_ID_STORE_STORE_ID": true,
+            "MAGEWORX_DOWNLOADS_ATTACHMENT_LOCALE_ATTACHMENT_ID_STORE_ID": true
+        }
+    },
+    "mageworx_downloads_section_locale": {
+        "column": {
+            "section_locale_id": true,
+            "section_id": true,
+            "store_id": true,
+            "name": true,
+            "description": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "FK_B20303DD435A95D9AE3252D7D67EB064": true,
+            "MAGEWORX_DOWNLOADS_SECTION_LOCALE_STORE_ID_STORE_STORE_ID": true,
+            "MAGEWORX_DOWNLOADS_SECTION_LOCALE_SECTION_ID_STORE_ID": true
+        }
+    }
+}

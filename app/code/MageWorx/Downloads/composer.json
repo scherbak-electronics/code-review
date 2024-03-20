@@ -1,0 +1,26 @@
+{
+    "name": "mageworx/module-downloads",
+    "description": "MageWorx Downloads extension",
+    "require": {
+        "php": ">=7.1",
+        "magento/module-catalog": ">=103.0.0 < 105",
+        "magento/module-downloadable": ">=100.3.0 < 101",
+        "magento/framework": ">=102.0.0 < 104",
+        "magento/module-ui": ">=101.0.0 < 103"
+    },
+    "type": "magento2-module",
+    "version": "3.0.9",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "MageWorx\\Downloads\\": ""
+        }
+    }
+}
+

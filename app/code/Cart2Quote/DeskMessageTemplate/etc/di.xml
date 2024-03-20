@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright (c) 2020. Cart2Quote B.V. All rights reserved.
+  ~ See COPYING.txt for license details.
+  -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Cart2Quote\DeskMessageTemplate\Api\Data\MessageSearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
+    <preference for="Cart2Quote\DeskMessageTemplate\Api\Data\MessageInterface" type="Cart2Quote\DeskMessageTemplate\Model\Message" />
+    <preference for="Cart2Quote\DeskMessageTemplate\Api\MessageRepositoryInterface" type="Cart2Quote\DeskMessageTemplate\Model\MessageRepository" />
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="desktemplate_message_listing_data_source" xsi:type="string">Cart2Quote\DeskMessageTemplate\Model\ResourceModel\Message\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Cart2Quote\DeskMessageTemplate\Model\ResourceModel\Message\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">desk_message_template</argument>
+            <argument name="eventPrefix" xsi:type="string">desktemplate_message_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">desktemplate_message_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Cart2Quote\DeskMessageTemplate\Model\ResourceModel\Message</argument>
+        </arguments>
+    </type>
+    <virtualType name="MessageGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="MessageGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Cart2Quote\DeskMessageTemplate\Model\ResourceModel\Message\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">MessageGridFilterPool</argument>
+        </arguments>
+    </virtualType>
+</config>

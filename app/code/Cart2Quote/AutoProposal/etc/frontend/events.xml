@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Copyright (c) 2019. Cart2Quote B.V. All rights reserved.
+  ~ See COPYING.txt for license details.
+  -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="quotation_controller_frontend_create_quote_after">
+        <observer name="cart2quote_autoproposal_propose" instance="Cart2Quote\AutoProposal\Observer\CreateQuoteObserver"/>
+    </event>
+    <event name="quotation_controller_frontend_default_after">
+        <observer name="cart2quote_autoproposal_propose" instance="Cart2Quote\AutoProposal\Observer\DefaultObserver"/>
+    </event>
+</config>

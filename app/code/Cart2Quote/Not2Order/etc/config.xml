@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright (c) 2020. Cart2Quote B.V. All rights reserved.
+  ~ See COPYING.txt for license details.
+  -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <cart2quote_not2order>
+            <advanced>
+                <minicartdivclass>minicart-wrapper</minicartdivclass>
+                <minicartaclass>action showcart</minicartaclass>
+                <addtocartid>product-addtocart-button</addtocartid>
+                <addtocartclass>action tocart primary</addtocartclass>
+            </advanced>
+            <global>
+                <replace_price>Price on Request</replace_price>
+            </global>
+        </cart2quote_not2order>
+    </default>
+</config>

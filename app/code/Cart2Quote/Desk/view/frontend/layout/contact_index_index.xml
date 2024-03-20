@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright (c) 2019. Cart2Quote B.V. All rights reserved.
+  ~ See COPYING.txt for license details.
+  -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="contactForm">
+            <action method="setTemplate" ifconfig="desk_general/default_settings/contact_page_visibility">
+                <argument name="template" xsi:type="string">Cart2Quote_Desk::magento/contact/form.phtml</argument>
+            </action>
+            <block class="Cart2Quote\Desk\Block\Magento\Contact\Success" name="ticket.message.success" template="Cart2Quote_Desk::magento/contact/success.phtml" cacheable="false" ifconfig="desk_general/default_settings/contact_page_visibility"/>
+        </referenceBlock>
+    </body>
+</page>

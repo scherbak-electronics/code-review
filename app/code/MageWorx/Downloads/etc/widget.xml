@@ -1,0 +1,79 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget class="MageWorx\Downloads\Block\Widget\Attachments" id="mageworx_downloads_attachments">
+        <label>MageWorx Attachments</label>
+        <description>MageWorx Attachments</description>
+        <parameters>
+            <parameter name="title" xsi:type="text" required="false" visible="true">
+                <label translate="true">Title</label>
+            </parameter>
+            <parameter xsi:type="select" name="assign_type" required="true" visible="true">
+                <label translate="true">Assign Type</label>
+                <options>
+                    <option name="all" value="all">
+                        <label translate="true">All Attachments</label>
+                    </option>
+                    <option name="specific_attachments" value="specific_attachments">
+                        <label translate="true">Specific Attachments</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter xsi:type="block" name="attachment_ids" visible="true">
+                <label translate="true">Specify Attachments</label>
+                <depends>
+                    <parameter name="assign_type" value="specific_attachments"/>
+                </depends>
+                <block class="MageWorx\Downloads\Block\Adminhtml\Widget\Chooser\Attachments"/>
+            </parameter>
+            <parameter name="template" xsi:type="select" visible="true" required="true" sort_order="20">
+                <label translate="true">Template</label>
+                <options>
+                    <option name="default" value="widget/attachments/default.phtml" selected="true">
+                        <label translate="true">Attachments Default Template</label>
+                    </option>
+                </options>
+            </parameter>
+        </parameters>
+    </widget>
+    <widget class="MageWorx\Downloads\Block\Widget\Sections" id="mageworx_downloads_sections">
+        <label>MageWorx Attachment Sections</label>
+        <description>MageWorx Attachment Sections</description>
+        <parameters>
+            <parameter name="title" xsi:type="text" required="false" visible="true">
+                <label translate="true">Title</label>
+            </parameter>
+            <parameter xsi:type="select" name="assign_type" required="true" visible="true">
+                <label translate="true">Assign Type</label>
+                <options>
+                    <option name="all" value="all">
+                        <label translate="true">All Sections</label>
+                    </option>
+                    <option name="specific_sections" value="specific_sections">
+                        <label translate="true">Specific Sections</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter xsi:type="block" name="section_ids" visible="true">
+                <label translate="true">Specify Sections</label>
+                <depends>
+                    <parameter name="assign_type" value="specific_sections"/>
+                </depends>
+                <block class="MageWorx\Downloads\Block\Adminhtml\Widget\Chooser\Sections"/>
+            </parameter>
+            <parameter name="template" xsi:type="select" visible="true" required="true" sort_order="20">
+                <label translate="true">Template</label>
+                <options>
+                    <option name="default" value="widget/sections/default.phtml" selected="true">
+                        <label translate="true">Attachment Sections Default Template</label>
+                    </option>
+                </options>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

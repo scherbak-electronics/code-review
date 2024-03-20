@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Customerprice_Attachment::manager" title="Customerprice Attachment" module="Customerprice_Attachment" sortOrder="10" resource="Customerprice_Attachment::manager"/>
+        <add id="Customerprice_Attachment::add_row" title="Customerprice Attachment" module="Customerprice_Attachment" sortOrder="20" parent="Customerprice_Attachment::manager" action="grid/grid" resource="Customerprice_Attachment::add_row"/>
+    </menu>
+</config>
+

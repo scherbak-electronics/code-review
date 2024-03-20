@@ -1,0 +1,16 @@
+<?php
+/**
+ * Copyright (c) 2019. Cart2Quote B.V. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var Cart2Quote\Desk\Block\Customer\Ticket\View\Message $block */
+?>
+
+<?php $ticket = $block->getTicketData() ?>
+<form id="desk_message_form"
+      action="<?php echo $block->getUrl('desk/ticket/create') ?>"
+      data-mage-init='{"validation":{}}'>
+    <?php echo $block->getChildHtml() ?>
+    <input type="hidden" name="redirect_to_ticket" value="true"/>
+</form>

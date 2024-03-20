@@ -1,0 +1,43 @@
+"Before import you should to get away from the section's duplicated names: %1","Before import you should to get away from the section's duplicated names: %1"
+"Downloads: Import Attachments","Downloads: Import Attachments"
+"Attachments were imported.","Attachments were imported."
+"Invalid file upload attempt","Invalid file upload attempt"
+"Downloads: Import Sections","Downloads: Import Sections"
+"Sections were imported.","Sections were imported."
+Section,Section
+Name,Name
+File,File
+URL,URL
+Description,Description
+Products,Products
+"Customer Groups","Customer Groups"
+Stores,Stores
+"Downloads Limit","Downloads Limit"
+"Is Active","Is Active"
+"Invalid file upload attempt.","Invalid file upload attempt."
+"Data for import not found.","Data for import not found."
+"Missed section name (title) in line %1","Missed section name (title) in line %1"
+"File path and URL can't be empty at same time - see line %1","File path and URL can't be empty at same time - see line %1"
+"File path and URL can't be set at same time - see line %1","File path and URL can't be set at same time - see line %1"
+"Missed customer group(s) in line %1","Missed customer group(s) in line %1"
+"Missed store code(s) in line %1","Missed store code(s) in line %1"
+"Incorrect downloads limit in line %1","Incorrect downloads limit in line %1"
+"Missed or incorrect status in line %1","Missed or incorrect status in line %1"
+"The requested product SKUs are not found: %1.","The requested product SKUs are not found: %1."
+"The requested sections are not found: %1.","The requested sections are not found: %1."
+"The requested store codes are not found: %1.","The requested store codes are not found: %1."
+"The requested file names are not found: %1.","The requested file names are not found: %1."
+"The requested customer groups are not found: %1.","The requested customer groups are not found: %1."
+"The requested file is not found: %1.","The requested file is not found: %1."
+"Invalid status value in line %1","Invalid status value in line %1"
+"Duplicate row (same section's name) was found in line %1","Duplicate row (same section's name) was found in line %1"
+"Import Attachments","Import Attachments"
+"Skip Product Checks","Skip Product Checks"
+"Skip File Checks","Skip File Checks"
+"Attachments won't be added for skipped records.","Attachments won't be added for skipped records."
+"Export Attachments","Export Attachments"
+"Download example CSV file","Download example CSV file"
+Download,Download
+"Import Sections","Import Sections"
+"Export Sections","Export Sections"
+"Please select a file to import!","Please select a file to import!"

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright (c) 2023. Cart2Quote B.V. All rights reserved.
+  ~ See COPYING.txt for license details.
+  -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Cart2Quote_SalesRep::css/quotation/edit/salesrep-styles.css"/>
+    </head>
+    <body>
+        <referenceBlock name="order_info">
+            <block class="Cart2Quote\SalesRep\Block\Adminhtml\Container\Order" cacheable="false" name="quote_details_salesrep" template="Cart2Quote_SalesRep::container/order.phtml" after="quote_details_account_fields_customer_account_data">
+                <block class="Cart2Quote\SalesRep\Block\Adminhtml\SalesRep\User" cacheable="false" name="salesrep_user" template="Cart2Quote_SalesRep::user.phtml"/>
+                <block class="Cart2Quote\SalesRep\Block\Adminhtml\SalesRep\Users" cacheable="false" name="salesrep_users" template="Cart2Quote_SalesRep::users.phtml"/>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

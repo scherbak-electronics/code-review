@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright (c) 2023. Cart2Quote B.V. All rights reserved.
+  ~ See COPYING.txt for license details.
+  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Cart2Quote\SalesRep\Api\UserRepositoryInterface"
+                type="Cart2Quote\SalesRep\Model\ResourceModel\UserRepository" />
+    <preference for="Cart2Quote\SalesRep\Api\Data\UserInterface"
+                type="Cart2Quote\SalesRep\Model\Data\User" />
+    <preference for="Cart2Quote\SalesRep\Api\Data\UserSearchResultsInterface"
+                type="Magento\Framework\Api\SearchResults" />
+    <preference for="Cart2Quote\Quotation\Model\Quote\Email\SenderBuilder"
+                type="Cart2Quote\SalesRep\Model\Quote\Email\SenderBuilder"/>
+    <preference for="Cart2Quote\Quotation\Model\Quote\Email\Container\QuoteCanceledIdentity"
+                type="Cart2Quote\SalesRep\Model\Quote\Email\Container\QuoteCanceledIdentity"/>
+    <preference for="Cart2Quote\Quotation\Model\Quote\Email\Container\QuoteEditedIdentity"
+                type="Cart2Quote\SalesRep\Model\Quote\Email\Container\QuoteEditedIdentity"/>
+    <preference for="Cart2Quote\Quotation\Model\Quote\Email\Container\QuoteIdentity"
+                type="Cart2Quote\SalesRep\Model\Quote\Email\Container\QuoteIdentity"/>
+    <preference for="Cart2Quote\Quotation\Model\Quote\Email\Container\QuoteProposalAcceptedIdentity"
+                type="Cart2Quote\SalesRep\Model\Quote\Email\Container\QuoteProposalAcceptedIdentity"/>
+    <preference for="Cart2Quote\Quotation\Model\Quote\Email\Container\QuoteProposalExpireIdentity"
+                type="Cart2Quote\SalesRep\Model\Quote\Email\Container\QuoteProposalExpireIdentity"/>
+    <preference for="Cart2Quote\Quotation\Model\Quote\Email\Container\QuoteProposalRejectedIdentity"
+                type="Cart2Quote\SalesRep\Model\Quote\Email\Container\QuoteProposalRejectedIdentity"/>
+    <preference for="Cart2Quote\Quotation\Model\Quote\Email\Container\QuoteProposalIdentity"
+                type="Cart2Quote\SalesRep\Model\Quote\Email\Container\QuoteProposalIdentity"/>
+    <preference for="Cart2Quote\Quotation\Model\Quote\Email\Container\QuoteReminderIdentity"
+                type="Cart2Quote\SalesRep\Model\Quote\Email\Container\QuoteReminderIdentity"/>
+    <preference for="Cart2Quote\Quotation\Model\Quote\Email\Container\QuoteRequestIdentity"
+                type="Cart2Quote\SalesRep\Model\Quote\Email\Container\QuoteRequestIdentity"/>
+    <preference for="Cart2Quote\Quotation\Model\Quote\Email\Container\QuoteProposalRejectedIdentity"
+                type="Cart2Quote\SalesRep\Model\Quote\Email\Container\QuoteProposalRejectedIdentity"/>
+    <type name="Cart2Quote\SalesRep\Model\Quote\Email\SenderBuilder">
+        <plugin name="SenderBuilderPlugin" type="\Cart2Quote\SalesRep\Plugin\SenderBuilder" />
+    </type>
+    <type name="Magento\Sales\Api\OrderRepositoryInterface">
+        <plugin name="c2q_sr_order_repository_interface" type="Cart2Quote\SalesRep\Plugin\Magento\Sales\Order\Api\OrderRepositoryInterface" sortOrder="100" />
+    </type>
+    <type name="Cart2Quote\Quotation\Controller\Quote\Ajax\CreateQuote">
+        <plugin name="CreateQuotePlugin" type="Cart2Quote\SalesRep\Plugin\Quote\Ajax\CreateQuote" sortOrder="100" />
+    </type>
+</config>

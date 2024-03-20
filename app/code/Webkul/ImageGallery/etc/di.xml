@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_ImageGallery
+ * @author    Webkul
+ * @copyright Copyright (c) 2010-2016 Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="imagegallery_images_list_data_source" xsi:type="string">Webkul\ImageGallery\Model\ResourceModel\Images\Grid\Collection</item>
+                <item name="imagegallery_gallery_list_data_source" xsi:type="string">Webkul\ImageGallery\Model\ResourceModel\Gallery\Grid\Collection</item>
+                <item name="imagegallery_groups_list_data_source" xsi:type="string">Webkul\ImageGallery\Model\ResourceModel\Groups\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Webkul\ImageGallery\Model\ResourceModel\Images\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">wk_gallery_images</argument>
+            <argument name="eventPrefix" xsi:type="string">imagegallery_images_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">images_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Webkul\ImageGallery\Model\ResourceModel\Images</argument>
+        </arguments>
+    </type>
+    <type name="Webkul\ImageGallery\Model\ResourceModel\Gallery\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">wk_gallery_gallery</argument>
+            <argument name="eventPrefix" xsi:type="string">imagegallery_gallery_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">gallery_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Webkul\ImageGallery\Model\ResourceModel\Gallery</argument>
+        </arguments>
+    </type>
+    <type name="Webkul\ImageGallery\Model\ResourceModel\Groups\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">wk_gallery_groups</argument>
+            <argument name="eventPrefix" xsi:type="string">imagegallery_groups_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">groups_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Webkul\ImageGallery\Model\ResourceModel\Groups</argument>
+        </arguments>
+    </type>
+    <virtualType name="ImageGalleryGirdFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="ImagesGirdFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Webkul\ImageGallery\Model\ResourceModel\Images\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">ImageGalleryGirdFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="GalleryGirdFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Webkul\ImageGallery\Model\ResourceModel\Gallery\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">ImageGalleryGirdFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="GroupsGirdFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Webkul\ImageGallery\Model\ResourceModel\Groups\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">ImageGalleryGirdFilterPool</argument>
+        </arguments>
+    </virtualType>
+</config>

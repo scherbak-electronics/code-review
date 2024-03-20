@@ -1,0 +1,22 @@
+<?php
+/**
+ * Copyright © Pronko Consulting
+ * See LICENSE for license details.
+ */
+
+/** @var \Magento\Framework\View\Element\Template $block */
+?>
+<html>
+<meta http-equiv="refresh" content="0; URL=<?= $block->escapeXssInUrl($block->getUrl('checkout/cart'))?>">
+<body>
+<div class="page-head">
+    <h3><?= $block->escapeHtml(__('Payment was canceled')) ?></h3>
+</div>
+<p>
+    <?= $block->escapeHtml(__('Please ')) ?>
+    <a href="<?= $block->escapeXssInUrl($block->getUrl('checkout/cart'))?>">
+        <?= $block->escapeHtml(__('continue shopping')) ?>
+    </a>
+</p>
+</body>
+</html>

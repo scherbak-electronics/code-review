@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <payment>
+            <rootways_elavon_option>
+                <active>0</active>
+                <title>Elavon Payment By Rootways</title>
+                <order_status>processing</order_status>
+                <payment_mode>1</payment_mode>
+                <model>Rootways\Elavon\Model\Payment</model>
+            </rootways_elavon_option>
+        </payment>
+    </default>
+</config>

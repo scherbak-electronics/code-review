@@ -1,0 +1,16 @@
+{
+    "customerprice_attachment_records": {
+        "column": {
+            "entity_id": true,
+            "name": true,
+            "customer_type": true,
+            "pricelist_type": true,
+            "status": true,
+            "file": true,
+            "position": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

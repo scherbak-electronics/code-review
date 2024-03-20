@@ -1,0 +1,100 @@
+<?php
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_ImageGallery
+ * @author    Webkul
+ * @copyright Copyright (c) 2010-2016 Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+?>
+<?php
+    $groupCode = $this->getGroupCode();
+    $galleryIds = $this->getGalleryIdsFromGroupCode($groupCode);
+    $galleryCollection = $this->getSelectedGalleryCollection($galleryIds);
+?>
+<div class='gallery_container'>
+    <?php foreach ($galleryCollection as $gallery): ?>
+        <?php
+            $count = 0;
+            $flag = 0;
+            $galleryCode = $gallery->getGalleryCode();
+            $imageIds = $gallery->getImageIds();
+            if(strpos($imageIds, ",")) {
+                $imageIds = explode(",", $imageIds);
+            }
+            $thumbnail = (int)$gallery->getThumbnailShow();
+            $imagesCollecton = $this->getSelectedImagesCollection($imageIds);
+            $numberOfImages = $imagesCollecton->getSize();
+            $galleryUrl = $this->getGalleryUrl($gallery->getId());
+        ?>
+        <div class="wk_gallery">
+            <div id="main<?php echo $galleryCode;?>" class="wk_gallery_img_container">
+                <a href="<?php echo $galleryUrl; ?>" class="wk_gallery_album">
+                    <?php foreach ($imagesCollecton as $image): ?>
+                        <?php
+                            $count++;
+                            $imageId = $image->getId();
+                            $image = $image->getImage();
+                            $imageUrl = $this->getImageUrl($image);
+                            if($thumbnail == $imageId) {
+                                $css = 'style="opacity:1;"';
+                                $class = "wk_active wk_images wk_default";
+                                $flag = 1;
+                            } else{
+                                $css = 'style="opacity:0;"';
+                                $class = "wk_images";
+                            }
+                            if($count == $numberOfImages) {
+                                if(!$flag) {
+                                    $css = 'style="opacity:1;"';
+                                    $class = "wk_active wk_images wk_default";
+                                }
+                            }
+                            $resizeUrl = $this->getResizeUrl($image);
+                            if(!file_exists($resizeUrl)) {
+                                $resizeUrl = $this->resizeImage($image);
+                            }
+                        ?>
+                        <img src="<?php echo $resizeUrl; ?>" class="<?php echo $class;?>" <?php echo $css;?>/>
+                    <?php endforeach; ?>
+                </a>
+            </div>
+            <div class="wk_gallery_desc"><?php echo $gallery->getGalleryTitle()." (".$numberOfImages.")"; ?></div>
+        </div>
+    <?php endforeach; ?>
+</div>
+<script type="text/javascript">
+    require(['jquery'], function ($) {
+        $(document).ready(function(){
+            effectCycle = "";
+            $(".wk_gallery_album").on("mouseover",function(){
+                currentObject = $(this);
+                noOfImages = currentObject.find(".wk_images").length;
+                if(noOfImages > 1){
+                    effectCycle = setInterval(function(){
+                        current = currentObject.find(".wk_active");
+                        currentIndex = current.index()+1;
+                        if(currentIndex == noOfImages)
+                            next = currentObject.find(".wk_images").eq(0);
+                        else
+                            next = current.next();
+                        current.animate({"opacity":0}).removeClass("wk_active");
+                        next.animate({"opacity":1}).addClass("wk_active");
+                    },2000);
+                }
+            });
+            $(".wk_gallery_album").on("mouseleave",function(){
+                currentObject = $(this);
+                clearInterval(effectCycle);
+                currentObject.find(".wk_images").css("opacity", "0");
+                currentObject.find(".wk_images").removeClass("wk_active");
+                currentObject.find(".wk_images").removeClass("wk_default");
+                currentObject.find(".wk_images").eq(0).css("opacity", "1");
+                currentObject.find(".wk_images").eq(0).addClass("wk_active");
+                currentObject.find(".wk_images").eq(0).addClass("wk_default");
+            });
+        })
+    });
+</script>
